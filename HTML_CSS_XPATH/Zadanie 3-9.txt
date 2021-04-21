@@ -1,0 +1,204 @@
+CSS Selektory
+
+Zadanie 3.
+
+Wejdź na stronę http://demoqa.com/registration/ (skorzystaj z kopii z folderu Strony do zaliczenia). Zdefiniuj CSS selektory do elementów:
+
+a)First Name label 
+div[class = 'fieldset error']>label
+
+b) Single checkbox
+input[value='single']
+
+c) Phone Number input field
+[name='phone_9']
+
+d) Month (12) dropdown list
+[name='date_8[date][mm]']
+
+e) This field is required error message – appears after click button Submit for field E-mail
+input[name='e_mail']+div>span
+
+
+
+Zadanie 4.
+
+Zdefiniuj CSS Selektory ze strony http://demoqa.com/ (skorzystaj z kopii z folderu Strony do zaliczenia)
+
+a) Very Flexible image
+div[class='col-md-4']+div[class='col-md-4']+div[class='col-md-4'] img
+
+b) Home header
+[class='entry-title']
+
+c) Tab 3 button
+[aria-controls='tabs-3']
+
+d) Text under Customer support
+div[class='entry-content']>div:nth-child(2) p:nth-child(2)
+
+e) Page Title - Content 1 title
+div[aria-labelledby='ui-id-1']>b
+
+
+
+
+Zadanie 5.
+
+Wejdz na podaną stronę i zoptymalizuj CSS selektory (skorzystaj z kopii z folderu Strony do zaliczenia):
+
+a) http://www.turismoroma.it/cosa-fare-categorie/monumenti?lang=en
+#container > div.main-wrapper > div:nth-child(2) > div.post-desc > h2 > a
+
+Optymalizacja:
+div[name='Colosseo'] a[href*='sebastiano?lang=en']
+
+
+b) https://www.nasa.gov/
+#nasa-main-menu > li:nth-child(5) > a > span:nth-child(1)
+
+Optymalizacja:
+li[data-ember-action-56="56"]>a>span:nth-child(1)
+
+c) http://www.seleniumhq.org/
+#mainContent > div > a:nth-child(3) > img
+
+Optymalizacja:
+img[src*='Automation_files/experitest.jpg']
+
+d) http://www.seleniumhq.org/
+#choice > tbody > tr > td:nth-child(1) > center > a:nth-child(3) > img
+
+Optymalizacja:
+img[src*='Automation_files/selenium-grid-logo.png']
+
+e) http://www.seleniumhq.org/
+#sidebar > div.downloadBox > a
+
+Optymalizacja:
+Rozwiążanie 1:
+div>a[href*='org/download/']
+
+Rozwiązanie 2:
+div[class='downloadBox']>a
+
+f) https://www.ryanair.com/pl/pl/
+#search-container > div:nth-child(1) > div > form > div.col-flight-search-left > div > div > div.col-destination-airport > div:nth-child(2) > div:nth-child(5) > div > div.disabled-wrap > input
+
+Optymalizacja:
+input[class*='ng-pristine ng-untouched '][aria-labelledby='label-airport-selector-to']
+
+
+
+
+Zadanie 6.
+
+Wejdz na stronę https://www.ryanair.com/pl/pl , znajdź poniższe elementy i napisz do nich CSS selektory. Zadbaj o poprawność i optymalizację selektorów. Każdy CSS Selektor ma wskazywać wyłącznie na pojedynczy element.
+
+a. label,
+icon[class*='icon--selected']+label
+
+b. span,
+div[data-ref*='type-alert']>span
+
+c. dropdown  <!--zakładka Pomoc--> – tag ul po klinięciu listy rozwijanej, ze strony https://www.ryanair.com/pl/pl
+div[class='ry-header__menu-dropdown-container']>div:nth-child(1)>ul
+
+d. image – tag img,
+a[title='Google Play']>img
+
+e. button,
+hp-search-widget-tabs-container>button[class*='search'][data-ref='search-widget-tabs__flights']
+
+f. text – input o typie text,
+input[id='input-button__departure']
+
+g. input
+input[class='ng-tns-c194-14']
+
+
+
+
+XPath
+
+Zadanie 7.
+
+Wejdź na stronę http://demoqa.com/registration/ (skorzystaj z kopii z folderu Strony do zaliczenia). Zdefiniuj XPathy do elementów:
+
+a) First Name label
+.//label[text()='First Name']
+
+b) Single checkbox
+.//*[@value='single']
+
+c) Phone Number input field
+.//*[@name='phone_9']
+
+d) Month (12) dropdown list
+.//*[@name='date_8[date][mm]']
+
+e) This field is required error message – appears after click button Submit for E-mail field
+.//*[@name='e_mail']/following::span[1]
+
+
+
+
+
+Zadanie 8.
+
+Wejdz na stronę https://www.ryanair.com/pl/pl , znajdź poniższe elementy i napisz do nich XPathy. Zadbaj o poprawność i optymalizację selektorów. Każdy Xpath ma wskazywać wyłącznie na pojedynczy element.
+
+a. label,
+.//icon[contains(@class, 'icon--selected')]/following::label[1]
+
+b. span,
+.//*[@class='red-line-item__carrousel-container b3']
+
+c. dropdown <!--Zakładka Pomoc-->  – tag ul po klinięciu listy rozwijanej, ze strony: https://www.ryanair.com/pl/pl
+.//div[@*='ry-header__menu-dropdown-container']/div[1]/ul
+
+d. image – tag img,
+.//a[@title='Google Play']/img
+
+e. button,
+
+Rozwiązanie 1:
+.//div[@class='ry-header__menu']/following::button[1]
+
+Rozwiązanie 2:
+.//*[@class='search-widget-tabs__button ng-star-inserted' and @data-ref='search-widget-tabs__flights']
+
+f. text – input o typie text,
+
+Rozwiązanie 1:
+.//div[@class='flight-widget-controls__control-block flight-widget-controls__control-block--airports ng-tns-c78-4']/fsw-input-button[1]/following::input[@type='text']
+
+Rozwiązanie 2:
+.//input[@id='input-button__destination']
+
+g. input
+.//input[@class = 'ng-tns-c194-14']
+
+
+
+
+Zadanie 9.
+
+Wejdź na stronę https://www.nbp.pl/home.aspx?navid=archa&c=/ascx/tabarch.ascx&n=a063z210401 i napisz następujące XPath:
+
+a. Kurs średni dolara amerykańskiego korzystając z Nazwy waluty
+.//td[text()='dolar amerykański']/following::td[2]
+
+
+b. Kod waluty bat (Tajlandia) korzystając z informacji, że tekst zawiera „THB”
+
+Rozwiązanie 1:
+//*[text()[contains(.,'THB')]]
+
+Rozwiązanie 2: alternatywne
+//*[contains(text(), 'THB')]
+
+
+
+Rozwiązanie alteratywne mniej optymalne (gdyby było trzeba przejść od pola 'Kod waluty'):
+//*[contains(text(), 'Kod waluty')]/../../following::*[contains(text(), 'THB')]
