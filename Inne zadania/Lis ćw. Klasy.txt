@@ -1,0 +1,275 @@
+Æwiczenie 4.1
+
+Class Punkt
+{
+int x;
+int y;
+
+int getX()
+{
+return x;
+}
+
+int getY()
+{
+return Y;
+}
+
+void set(int wspX, int wspY)
+{
+x=wspX;
+y=wspY;
+}
+
+Punkt get()
+{
+Punkt punkt=new Punkt();
+punkt.x=x;
+punkty=y;
+return punkt;
+}
+}
+
+Punkt nowyPunkt = new nowyPunkt();
+int wspX = nowyPunkt.x;
+int wspY = nowyPunkt.y;
+
+int wspolX = nowyPunkt.getX()
+int wspolY = nowyPunkt.getY()
+
+Class Main
+{
+public static void main(String arg[])
+{
+Punkt punkt = new Punkt();
+Punkt punktPomocniczy;
+punktPomocniczy = get()
+System.out.println("Przed ustawieniem wspó³rzêdnych:");
+System.out.println("Wspó³rzêdna x:"+punktPomocniczy.x);
+System.out.println("Wspó³rzêdna y:"+punktPomocniczy.y);
+
+punkt.set(1,10);
+pomocniczyPunkt=punkt.get();
+
+System.out.println("Po ustawieniu wspó³rzêdnych");
+System.out.println("Wspó³rzêdna x:"+pomocniczyPunkt.x);
+System.out.println(Wspó³rzêdna y:"+pomocniczyPunkt.y");
+
+}
+}
+
+
+Æwiczenie 4.5
+
+Class Main
+{
+public static void main(String arg[])
+Punkt punkt = new Punkt()
+
+System.out.println("Wspó³rzêdne przed ustawieniem");
+System.out.println("Wspó³rzêdna X:"+punkt.get().x);
+System.out.println("wspó³rzêdna y:"+punkt.get().y);
+
+punkt.set(1,10);
+
+System.out.println("Po ustawieniu wspó³rzêdnych:");
+System.out.println("Wspó³rzêdna x:"+punkt.get().x);
+System.out.println("Wspó³rzêdna y:"+punkt.get().y);
+}
+}
+
+
+Æwiczenie 4.9
+
+Class Punkt()
+{
+int x;
+int y;
+
+Punkt()
+{
+x=320;
+y=200;
+}
+
+}
+
+Æwiczenie 4.10
+
+Class Main
+{
+public static void main(String arg[])
+{
+
+Punkt punkt = new Punkt()
+System.out.println("Wspó³rzêdna x:"+punkt.x);
+System.out.println("Wspó³rzêdna y:"+punkt.y);
+
+
+Æwiczenie 4.11
+
+Class Punkt 
+
+{
+int x;
+int y;
+
+Punkt(int wsplX,int wsply)
+{
+x=wsplX;
+y=wspolY;
+
+}
+
+}
+}
+}
+
+Class Main
+{
+public static void main(String arg[])
+{
+Punkt punkt = new Punkt(1,10);
+}
+
+}
+
+
+Æwiczenie 4,14
+
+Class Punkt
+{
+private int x;
+private int y;
+
+public Punkt()
+{
+x=320;
+y=200;
+}
+
+public Punkt(int wsplX, int WsplY)
+{
+x=wsplX;
+y=wsplY;
+}
+
+}
+
+Æwiczenie 4.15
+
+Class Main
+{
+public static void main(String args[])
+{
+Punkt punkt1=new Punkt();
+Punkt punkt2=new Punkt(1,10);
+
+System.out.println("Wspó³rzêdna punkt1:"+punkt1);
+System.out.println("wspó³rzêdna punkt2:"+punkt2);
+
+
+}
+}
+
+
+import  nazwa_pakietu.nazwa_klasy;
+import nazwa_pakietu.*;
+
+
+Æwiczenie 22
+
+public Class KolorowyPunkt extends Punkt{
+
+private int, kolor;
+
+public KolorowyPunkt()
+{
+super();
+kolor = 0;
+
+}
+
+publik KolorowyPunkt(int wspolX, int wspolY; int nowykolor)
+{
+super(wsplx, wsply);
+kolor = nowyKOlor;
+
+}
+
+public void ustawKolor(int nowykolor)
+{
+kolor = nowykolor;
+}
+public int pobierzKolor()
+{
+return kolor;
+}
+
+
+}
+
+æwiczenie 4.23
+
+public class Main
+{
+public static void main(String args[])
+{
+KolorowyPunkt punkt = new KolorowyPunkt(100,200,100);
+
+System.out.println("Wspó³rzêdna X:"+punkt.pobierzX());
+System.out.println("Wspó³rzêdna Y:"+punkt.pobierzY());
+System.out.println("Kolor:"+punkt.pobierzKolor());
+}
+}
+
+Æwiczenie 4.25
+
+public klasA
+{
+void f()
+{}
+}
+
+public klasaB extends klasaA
+{
+void f()
+{
+}
+
+}
+
+Æwiczenie 4.25
+
+public class Main
+{
+public static void main(String args[])
+{
+KlasaA obiektA = new klasaA();
+KlasaB obiektB = new KlasaB();
+
+obiektA.f();
+obiektB.f();
+
+}
+}
+
+
+
+Æwiczenie 4,26
+
+public class klasaA
+{
+void f()
+}
+
+public class klasaB extends klasaA
+{
+void f()
+{
+super.f();
+}
+}
+
+
+

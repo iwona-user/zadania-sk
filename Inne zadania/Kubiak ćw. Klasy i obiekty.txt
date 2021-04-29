@@ -1,0 +1,262 @@
+Zadanie 5.1
+
+pakage 51;// zadanie 5.1
+import java.io.*;
+
+class pole_prostokata
+{
+double a, b, pole;
+
+public void czytaj_dane() // deklaracja i opis metody czytaj_dane()
+
+throws IOExeotuib
+{
+BufferedReader br = new BufferedReader (new ImputStreamReader(System.in));
+System.out.println("Program oblicza pole prostok¹ta.");
+System.out.prinln("Podaj bok a:");
+a= Double.parseDouble(br.readLine());
+System.out.println("Podaj bok b:");
+b=Double.parseDouble(br.readLine());
+
+
+}
+
+public void przetworz_dane() / deklaracja i opis metody przetworz_dane()
+{
+pole=a*b;
+}
+
+public void wyswietl_wynik() / deklaracja i opis metody wyswietl_wynik
+{
+System.out.prinln("Pole prostokata o boku a:");
+System.out.println("%2.2f", a);
+System.out.println("i boku b:");
+System.out.println("%2.2f", b);
+System.out.println("wynosi:");
+System.out.println("%2.2f.\n", pole);
+
+}
+
+
+}
+
+
+public class Main
+{
+public static void main(String[] args)
+throws IOExeption
+{
+pole_prostokata pole = new pole_prostokata();
+pole.czytaj_dane(); // wywolanie metody czytaj_dane()
+pole.przetworz_dane(); // wywolanie metody przetworz_dane()
+pole.wyswietl_dane(); // wywolanie metody wyswietl_dane()
+
+}
+}
+
+Zadanie 5.3
+
+pakage zadanie53; // zadanie 5.3
+import java.util.*;
+
+class matrix
+{
+public void czytaj_dane(double [][]macierz, int rozmiar)
+{
+int i,j;
+Random rand= new Random(); // gnerowanie liczby pseudolosowej
+for(i=0; i<rozmiar;i++)
+{
+for(j=0;j<rozmiar;j++)
+{
+if(i==j)
+macierz[i][j]=Math.round(9*(rand.nextDouble()));
+
+else
+macierz[i][j]=0;
+}
+}
+}
+public void przetworz_dane(double [][]macierz, int rozmiar)
+{
+int i;
+double suma=0;
+for(i=0;i<rozmiar;i++)
+{
+suma=suma+macierz[i][i];
+System.out.println("Suma elementów na przek¹tnej wynosi"+(int)suma+".");
+}
+}
+public void wyswietl_wynik(double [][]macierz, int rozmiar)
+{
+int i,j;
+for(i=0;i<rozmiar;i++)
+{
+for(j=0;j<rozmiar;j++)
+{
+System.out.println((int) macierz[i][j]+" ");
+}
+System.out.println();
+
+}
+
+}
+
+
+}
+
+public class Main
+{
+public static void main(String[] args)
+{
+int rozmiar =10;
+double [][] tablica = new double [rozmar][rozmiar];
+matrix matrix1=new matrix();
+matrix1.czytaj_dane(tablica, rozmiar);
+matrix1.przetworz_dane(tablica,rozmiar);
+matrix1.wyswietl_dane(tablica, rozmiar);
+}
+
+
+}
+
+
+Zadanie 5.4
+
+pakage zadanie54; //zadanie 5.4
+
+class sortowanie
+{
+public void czytaj_dane(int [] liczby, int n)
+{
+int i;
+liczby[0]=57;
+liczby[1]=303;
+liczby[2]=34;
+liczby[3]=1025;
+liczby[4]=8;
+liczby[5]=20;
+System.out.println("Liczby nieposortowane to:");
+for(i=0;i<n;i++)
+{
+if(i<n-1)
+System.out.println(liczby[i]+",");
+else
+System.out.println(liczby[i]+".");
+}
+System.out.println();
+}
+public void przetworz_dane(int [] liczby, int n)
+{
+int i,j,x;
+for(i=0;i<=n-1;i++)
+{
+for(j=n-1;j>=i;--j)
+{
+if(liczby[j-1]>liczby[j])
+x=liczby[j-1];
+liczby[j-1]=liczby[j];
+liczby[j]=x;
+}
+}//koniec pêtli j
+}//koniec pêtli i
+}
+public void wyswietl_wynik(int [] liczby, int n)
+{
+int i;
+
+System.out.println("liczby posortowane to:");
+for(i=0;i<n;i++)
+{
+if(i<n-1)
+System.out.println(liczby[i]+",");
+else
+System.out.println(liczby[i]+".");
+}
+System.out.println();
+}
+}
+
+public class Main
+{
+public static void main(String[] args)
+{
+int n=6;
+int [] liczby = new int[n];
+sortowanie bobelki = new sortowanie();
+bobelki.czytaj_dane(liczby, n);
+bobelki.przetworz_dane(liczby,n);
+bobelki.wyswietl_wynik(liczby,n);
+}
+}
+
+Zadanie 5.5
+
+pakage zadanie55; // zadanie 5.5
+import java.io.*;
+
+class silnia1
+{
+public lang silnia(int liczba)
+{
+long zwrot=1;
+if (liczba>=2)
+{
+zwrot = liczba *silnia(liczba-1);
+}
+return zwrot;
+}
+}
+public class Main
+{
+public static void main(String[] args)
+throws IOException
+{
+int i, n;
+BufferedReader br= new BufferedReader(new ImputStreamReader(System.in));
+silnia1 s= new silnia1();
+System.out.println("Obliczanie silni dla dowolnej liczby ca³kowitej.");
+System.out.println("Podaj n.");
+n=Integer.parseInt(br.readLine());
+
+for(i=1;i<=n;i++)
+{
+System.out.println(" "+i+"! = "+s.silnia1(i));
+}
+
+}
+}
+
+
+Zadanie 5.6
+
+pakage zadanie56; //zadanie 5.6
+
+class triangle
+{
+public static int triangle(int n)
+{
+if(n==1)
+return 1;
+else
+return (n+triangle(n-1));
+}
+}
+
+public class Main 
+{
+public static void main(String[] args)
+{
+int i,n=10;
+triangle liczby= new triangle();
+System.out.println("Program znajduje 10 pierwszych liczb trójk¹tnych.");
+for(i=1;i<=n; i++)
+{
+System.out.println("#"+i+"="+liczby.traingle(i));
+}
+
+}
+}
+
+
+

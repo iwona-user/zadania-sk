@@ -1,0 +1,256 @@
+Zadanie 6.1
+
+package zadanie61; // zadanie 6.1
+import java.io.*;
+
+class plik
+{
+String dane, dane1;
+
+public void czytaj_dane()
+throws IOException
+{
+BufferedReader br = BufferedReader(new ImputStreamReader(System.in));
+System.out.println("Podaj imiê i nazwisko");
+dane= (br.readLine());
+}
+
+public void zapisz_dane_do_pliku()
+throws IOException
+{
+System.out.println("Zapisujemy dane do pliku dane.txt.");
+FileWriter fw= new FileWriter("dane.txt");
+fw.write(dane);
+fw.close(); // zamkniêcie pliku
+}
+
+public void czytaj_dane_z_pliku()
+throws IOException
+{
+System.out.println("Odczytujemy dane z pliku dane.txt.");
+System.out.println();
+FileReader fr = new FileReader(dane.txt);
+BufferedReader br=BufferedReader(fr);
+while( (dane1=br.readLine()) !=null)
+{
+System.out.println(dane1);
+}
+fr.close();
+}
+
+} // koniec class plik
+
+public class Main
+{
+public static void main(String[] args)
+throws IOException
+{
+plik plik1 = new plik();
+plik1.czytaj_dane();
+plik1.zapisz_dane_do_pliku();
+plik1.czytaj_dane_z_pliku();
+}
+}
+
+
+Zadanie 6.1
+
+package zadanie62; // zadanie 6.2
+import java.io.*;
+
+class matrix
+{
+int rozmiar = 10;
+
+public void czytaj_dane(int tablica[][], int rozmiar)
+{
+int i, j;
+System.out.println("Tworzymy tabice 10x10.");
+System.out.print();
+
+for(i=0;i<rozmiar;i++)
+{
+for(j=0,j<rozmiar;j++)
+{
+if(i=j)
+tablica[i][j]=1;
+else
+tablica[i][j]=0;
+System.out.print(tablica[i][j]+" ");
+} //j
+System.out.println();
+} //i
+
+System.out.println();
+}
+
+public void zapisz_dane_do_pliku(int tablica[][], int rozmiar)
+throws IOException
+{
+int i,j;
+System.out.println("Zapisujemy tablicê 10x10 do pliku.");
+System.out.println();
+
+FileWriter fw = new FileWriter("dane.txt");
+// tworzymy i otwieramy plik do zapisu
+
+for(i=0;i<rozmiar;i++)
+{
+for(j=0;j<rozmiar;j++)
+{
+fw.write((char)(tablica[i][j])); // rzutujemy i zapisujemy tablicê do pliku
+
+System.out.print(tablica[i][j]+" ");
+} // j
+System.out.println();
+} //i
+fw.close() // zamykanie pliku
+}
+
+public void czytaj_dane_z_pliku(int tablica[][], int rozmiar)
+throws IOException
+{
+int i,j;
+System.out.println();
+System.out.println("Oczytujemy tablicê 10x10 z pliku");
+System.out.println();
+FileReader fr = new FileReader("dane.txt");
+BufferedReader br = new BufferedReader(fr);
+for(i=0;i<rozmiar;i++)
+{
+for(j=0;j<rozmiar;j++)
+{
+tablica[i][j]=(int) br.read(); // odczytujemy tablicê z pliku i rzutujemy
+System.out.print(tablica[i][j]+" ");
+}// j
+System.out.println();
+} //i
+fr.close() // zamkniêcie pliku
+}
+} // koniec class matrix
+
+
+public class Main
+{
+public static void main(String[] args)
+throws IOException
+{
+int rozmiar=10;
+int tab[][] = new int[rozmiar][rozmiar];
+int tab1[][] = new int[rozmiar][rozmiar];
+matrix matrix1 = new matrix();
+matrix1.czytaj_dane(tab, rozmiar);
+matrix1.zapisz_dane_do_pliku(tab, rozmiar);
+matrix1.czytaj_dane_z_pliku(tab, rozmiar);
+}
+}
+
+
+
+
+zadanie 6.3
+package zadanie63; // zadanie 6.3
+import java.io.*;
+
+class matrix
+{
+int n=10;
+int a[][] = new int[n][n]; // deklarujemy tablicê a
+int b[][] = new int[n][n]; // deklarujemy tablicê b
+int c[][] = new int[n][n]; // deklarujemy tablicê c
+
+public void czytaj_dane()
+{
+int i,j;
+System.out.println("Tworzymy tablicê a.");
+System.out.println();
+for(i=0;i<n;i++)
+{
+for(j=0;j<n;j++)
+{
+if(i==1)
+a[i][j]=1;
+else
+a[i][j]=0;
+System.out.print(a[i][j]+" ");
+}//j
+System.out.println();
+}//j
+}
+
+public void przetworz_dane()
+{
+int i,j;
+System.out.println();
+
+System.out.println("Przepisujemy zawartoœæ tablicy a do tablicy b");
+
+for(i=0;i<n;i++)
+{
+for(j=0;j<n;j++)
+{
+b[i][j]=a[j][i]; // przepisujemy zawartoœæ tablicy a do tablicy b.
+} //j
+} // i
+}
+
+public void zapisz_dane_do_pliku()
+throws IOException
+{
+int i,j;
+
+System.out.println("i zapisujemy tablicê b do pliku.");
+System.out.println();
+
+FileWriter fw = new FileWriter("dane.txt"); // tworzymy i otwieramy plik do zapisu
+
+for(i=0;i<n;i++)
+{
+for(j=0;j<n;j++)
+{
+fw.write( (char)(b[i][j]) ); //rzutujemy i zapisujemy tablicê b do pliku
+
+System.out.print(b[i][j]+" ");
+}// j
+System.out.println();
+} //i
+fw.close(); // zamykamy plik
+}
+
+public void czytaj_dane_z_pliku()
+throws IOException
+{
+int i,j;
+System.out.println();
+
+System.out.println("Oczytujemy dane z pliku i umieszczamy w tablicy c.");
+System.out.println();
+FileReader fr = new FileReader("dane.txt");
+BufferedReader br = new BufferedReader(fr);
+for(i=0;i<n;i++)
+{
+for(j=0;j<n;j++)
+{
+<> b³¹d <> c[i][j] = (int) br.read(); // odczytujemy dane z pliku i rzutujemy je
+
+System.out.print(c[i][j]+" ");
+} //j
+System.out.println();
+} //i
+fr.close; // zamkniêcie pliku
+}
+
+} // koniec class matrix
+
+public class Main
+{
+public static void main(String[] args)
+throws IOException
+{
+matrix matrix1 = new matrix(); 
+matrix1.czytaj_dane();
+matrix1.przetworz_dane();
+matrix1.zapisz_dane_do_pliku();
+matrix1.czytaj_dane_z_pliku();
+}
+} // koniec class Main

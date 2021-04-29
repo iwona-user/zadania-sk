@@ -1,0 +1,10 @@
+Strona z której œci¹g³am Eclipsa
+http://www.eclipse.org/downloads/
+
+
+Zmienna œrodowiskowa przed Jav¹
+
+%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;C:\Program Files\HPQ\IAM\bin
+
+Œcie¿ka dostêpu:
+C:\Program Files\Java\jdk1.7.0_02\bin

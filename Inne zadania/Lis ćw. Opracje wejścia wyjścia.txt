@@ -1,0 +1,418 @@
+Æwiczenie 6.1
+
+public class Main
+{
+public static void main(String[] args)
+{
+int liczba1 =152;
+char znak = 'b';
+double liczba2 = 2.54;
+System.out.print(liczba1);
+System.out.print(" ");
+System.out.print(znak);
+System.out.print(" ");
+System.out.print(liczba2);
+}
+}
+
+Æwiczenie 6.2
+
+public class Main
+{
+public static void main(String[] args)
+{
+int liczba1 = 152;
+char znak = 'b';
+double liczba2 = 2.54;
+System.out.print(liczba1+" "+znak+" "+liczba2);
+}
+}
+
+
+Æwiczenie 6.3
+
+public class Main
+{
+public static void main(String[] args)
+{
+System.out.println(123+321);
+System.out.println("123"+"321");
+System.out.println("123"+321);
+}
+}
+
+Æwiczenie 6.4
+
+import java.io.*;
+
+public class Main
+{
+public static void main(String[] args)
+{
+ImputStreamReader inp = new ImputStreamReader(System.in);
+BufferedReader inbr = new BufferedReader(inp);
+System.out.println("Wprowadz wiersz tekstu:");
+try
+{
+String line = inbr.readLine();
+System.out.println("Wprwoadzony wiersz to:");
+System.out.println(line);
+}
+catch(IOException e)
+{
+System.out.println("B³¹d odczytu");
+}
+}
+}
+
+Æwiczenie 6.5
+
+import java.io.*;
+
+public class Main
+{
+public static void main(String[] args)
+{
+String line = "";
+BufferedReader inbr = new BufferedReader(new ImputStreamReader(System.in));
+
+System.out.println("Wprowadzaj wiersze tekstu."+"Aby zakoñczyæ,  wpisz quit");
+try
+{
+while(!line.equals("quit"))
+{
+line=inbr.readLine();
+System.out.println(line);
+}
+}
+catch(IOException e)
+{
+System.out.println("B³¹d odczytu.");
+}
+
+} end method main
+} end class Main
+
+
+Æwiczenie 6.6
+
+import java.io.*;
+public class Main
+{
+public static void main(String[] args)
+{
+double a, b;
+Reader r = new BufferedReader(new ImputStreamReader(System.in));
+StreamTokenizer inp = StreamTokenizer(r);
+try
+{
+System.out.println("Podaj a:");
+inp.nextToken();
+a=inp.nval;
+System.out.println("Podaj b:");
+inp.nextToken();
+b=inp.nval;
+System.out.println("Podane wartoœci to a="+a+", b="+b);
+}
+catch(IOException e)
+{
+System.out.println("B³¹d odczytu!");
+}
+
+}
+}
+
+
+Æwiczenie 6.7
+
+import java.io.*;
+
+public class Main
+{
+public static void main(String[] args)
+{
+int a, b;
+Reader r = new BufferedReader(new ImputStreamReader(System.in));
+StreamTokenizer inp= new StreamTokenizer(r);
+try
+{
+System.out.println("Podaj liczbê a:");
+while(inp.nextTokenizer() !=StreamTokenizer.TT_NUMBER)
+{
+System.out.println("Podaj poprawn¹ liczbê a:");
+}
+a= (int)inp.nval;
+System.out.println("Podaj liczbê b:");
+while(inp.nextTokenizer != StreamTokenizer.TT_NUMBER)
+{
+System.out.println("Podaj poprawn¹ liczbê b:");
+}
+b = (int) inp.nval;
+System.out.println("Podane wartoœci to: a="+a+", b="+b); 
+}
+catch(IOException e)
+{
+System.out.println("B³¹d odczytu!");
+}
+
+} end method main
+} end class Main
+
+Æwiczenie 6.8
+Równanie kwadratowe
+
+Æwiczenie 6.9
+
+java.util.*;
+
+public class Main
+{
+public static void main(String[] args)
+{
+Scanner sc = new Scanner(System.in);
+System.out.print("Podj liczbê ca³kowit¹:");
+while(!sc.hasNextINT())
+{
+System.out.print("To nie jest liczba ca³kowita.");
+System.out.print("Podaj liczbê ca³kowit¹:");
+sc.next();
+}
+int i = sc.nextInt();
+System.out.println("Wprowadzona liczba to:"+i);
+}
+}
+
+Æwiczenie 6.10
+
+import java.util.*;
+public class Main
+{
+public static void main(String[] args)
+{
+int suma = 0;
+Scanner sc = new Scanner(System.in);
+System.out.print("Wprowadzaj wartoœci ca³kowite. Aby zakoñczyæ,");
+System.out.println("wpisz wartoœæ niebêd¹c¹ liczb¹ ca³kowit¹.");
+while(sc.hasNextInt())
+{
+suma+= sc.nextInt();
+}
+System.out.println("Obliczona suma to:"+suma);
+} end method main
+} end class Main
+
+
+Æwiczenie 6.11
+Równanie kwadratowe z wykorzystaniem klasy Scanner
+
+import java.util.*;
+import java.io.*;
+
+public class Main
+{
+public static void main(String[] args)
+{
+double parametrA=0, parametrB = 0, parametrC=0;
+
+Scaner sc = new Scanner(System.in);
+try
+{
+System.out.print("Podaj parametr A:");
+while(!sc.hasNextDouble())
+{
+System.out.print("Podaj poprawny parametr A:");
+sc.next();
+}
+parametrA=sc.nextDouble();
+
+System.out.print("Podaj parametr B:");
+while(!sc.hasNextDouble())
+{
+System.out.print("Podaj poprawny parametr B:");
+sc.next();
+}
+parametrB = sc.nextDouble();
+
+System.out.print("Podaj parametr C:");
+while(!sc.hasNextDouble())
+{
+System.out.print("POdaj poprawny parametr C:");
+sc.next();
+}
+parametrC = sc.nextDouble();
+}
+catch(Exception e)
+{
+System.out.println("B³¹d odczytu!");
+System.exit(-1);
+}
+// tutaj dalszay kod klasy z æwiczenia 6.8
+
+} end method main
+} end class Main
+
+
+Æwiczenie 6.12
+
+import java.io.Console;
+
+public class Main
+{
+public static void main(String[] args)
+{
+Console con = System.console();
+if(con==null)
+{
+System.out.println("Brak konsoli!");
+System.exit(-1);
+}
+String line = con.readLine("WprowadŸ tekst:");
+con.printf("Wproadzony tekst:"+line);
+} end method main
+} end class Main
+
+Æwiczenie 6.13
+
+import java.io.Console;
+
+public class Main
+{
+public static void main(String[] args)
+{
+Console con = System.console();
+if(con == null)
+{
+System.out.println("Brak konsoli!");
+System.exit(-1);
+}
+String line = "";
+while(!"quit".equals(line))
+{
+line = con.readLine("WprwoadŸ tekst:");
+con.printf("Wprowadzony tekst:" +line+"\n");
+}
+} end method main
+} end class Main
+
+Æwiczenie 6.14
+
+import java.io.Console;
+
+public class Main
+{
+public static void main(String[] args)
+{
+Console con = System.console();
+if(con==null)
+{
+System.out.println("Brak konsoli!");
+System.exit(-1);
+}
+String line = "";
+int liczba;
+con.printf("Podaj liczbê ca³kowit¹:");
+while(true)
+{
+line = con.readLine();
+try
+{
+liczba=Integer.parseInt(line);
+}
+catch(NumberFormatException e)
+{
+con.printf("To nie jest liczba ca³kowita.");
+con.printf("Podaj liczbê ca³kowit¹:");
+continue;
+}
+break;
+}
+con.printf("Dziesiêtnie: %d%n", liczba);
+con.printf("Osemkowo: %o%n", liczba);
+con.printf("Szesznastkowo: %x%n", liczba);
+
+} end method main
+} end class Main
+
+
+Æwiczenie 6.15
+
+import java.io.*;
+public class Main
+{
+public static void main(String[] args)
+{
+String line = "";
+
+FileOutputStream fout = null;
+
+try
+{
+fout = new FileOutputStream("test.txt");
+}
+
+catch(FileNotFoundException e)
+{System.out.println("B³¹d przy otwieraniu pliku.");
+System.exit(-1);
+}
+DataOutputStream out = new DataOutputStream(fout);
+BufferedReader inbr = new BufferedReader(new ImputStreamReader(System.in));
+
+try
+{
+while(true)
+{
+if((line=inbr.readLine())==null	|| line.equals("quit"))
+{
+break;
+}
+out.writeBytes(line+'\n');
+}
+}
+catch(IOException e)
+{
+System.out.println("Read/write error");
+}
+
+} end method main
+} end class Main
+
+
+Æwiczenie 6.16
+
+import java.io.*;
+
+public class Main
+{
+public static void main(String[] args)
+{
+String line = "";
+FileInputStream fin = null;
+
+try
+{
+fin = new FileInputStream("tekst.txt");
+}
+catch(FileNotFoundException e)
+{
+System.out.println("Brak pliku.");
+System.exit(-1);
+}
+DataInputStream out = new DataInputStream(fin);
+BufferedReader inbr = new BufferedReader(new InputStreamReader(fin));
+
+try
+{
+while((line=inbr.readLine()) != null)
+{
+System.out.println(line);
+}
+}
+catch(IOException e)
+{
+System.out.println("B³¹d wejœcia-wyjœcia.");
+}
+} end method main
+} end class Main
+
+Æwiczenie 6.17
+

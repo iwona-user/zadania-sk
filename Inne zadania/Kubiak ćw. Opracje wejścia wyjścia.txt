@@ -1,0 +1,145 @@
+pakage zadanie11 / zadanie 1.1
+import java.io.*;
+
+public class Main
+{
+public static void main(String[] args)
+throws IOException
+{
+double a, b, pole;
+BufferedReader br = new BufferedReader(new ImputStreamReader(System.in));
+System.out.println("Program oblica pole prostok¹ta.");
+System.out.println("Podaj bok a.");
+a=Double.parsDouble(br.readLine());
+System.out.println("Podaj bok b.");
+b=Double.parseDouble(br.readLine());
+pole=a*b;
+System.out.print("Pole prostok¹ta o boku a="+a+"i boku b="+b);
+System.out.println("Wynosi"+pole+".");
+}
+
+}
+
+Zadanie 1.2
+
+pakage zadanie12; // zadanie 1.2
+
+public class Main
+{
+public static void main(String[] args)
+{
+System.out.println("Program wyœwietla liczbê pi z zadana dok³adnoœci¹.");
+System.out.prinf("pi="+"%6.5f\n", Math.PI);
+}
+}
+
+
+zadanie 1.3
+
+pakage zadanie13;//zadanie 1.3
+public class Main
+{
+public static void main(String[] args)
+{
+System.out.println("Program wyœwietla pierwiastek kwadratowy");
+System.out.println("z liczby pi z dok³adnoœci¹ dwóch miejsc po przecinku.");
+System.out.printf("SQRT(PI)="+"%2.2f\n", Math.sqrt(Match.PI));
+
+}
+}
+
+Zadanie 1.4
+
+pakage zadanie14; // zadanie 1.4
+import java.io.*;
+public class Main
+{
+public static void main(String[] args)
+throws IOExcepion
+{
+double r, obietosc;
+BufferedReader br = new BufferedReader(new ImputStreamReader(System.in));
+System.out.println("Program oblicza obiêtoœæ kuli");
+System.out.println("Podaj parametr r:");
+r=Double.parseDouble(br.readLine());
+objetosc = 4.0*Math.pi*r*r*r/3;
+System.out.print("Objêtoœæ kuli o promieniu r=");
+System.out.printf("%2.2f", r);
+System.out.print("wynosi");
+System.out.printf("%2.2f.", objetosc);
+}
+}
+
+
+Zadanie 1.5
+
+pakage zadanie15 / zadanie 1.5
+
+public class Main
+{
+public static void main(String[] args)
+{
+int a =37;
+int b=11;
+System.out.println("Program wyœwietla wynik dzielenia ca³kowitego");
+System.out.println("bez reszty dwóch liczb ca³kowitych");
+System.out.println("dla liczb a="+a+", b="+b);
+System.out.println(a+"/"+b+"="+a/b+".");
+}
+}
+
+
+
+
+Zadanie 1.6
+
+package zadanie16; // zadanie 1.6
+
+public class Main
+{
+public static void main(String[] args)
+{
+int a=37;
+int b=11;
+System.out.println("Program oblicza resztê z dzielenia ca³kowitego");
+System.out.println("dzielenia dwóch liczb ca³kowitych");
+System.out.println("dla liczb a="+a+", b="+b);
+System.out.println(a+"%"+b+"="+a%b+".");
+
+}
+}
+
+
+Zadanie 1.7
+
+package zadanie17; // zadanie 1.7
+import java.io.*;
+
+public class Main
+{
+public static void main(String[] args)
+throws IOException
+{
+float x, y, suma, roznica, iloczyn, iloraz;
+BufferedReader br = new BufferedReader(new ImputStreamReader(System.in));
+System.out.println("Program oblicza sumê, ró¿nicê, iloczyn i iloraz");
+System.out.println("dla dwóch liczb x i y wprowadzonych z klawiatury.");
+
+System.out.println("Podaj x.");
+x=Float.parseFloat(br.readLine());
+System.out.println("Podaj y.");
+y=Float.parseFloat(br.readLine());
+suma= a+b;
+roznica=a-b;
+iloczyn=a*b;
+iloraz=a/b;
+System.out.printf("Dla liczb x="+"%2.2f", x);
+System.out.printf("i y="+"%2.2f", y);
+System.out.println();// wyœwietlenie pustej lini
+System.out.printf("Suma="+"%2.2f,\n"+suma);
+System.out.printf("ró¿nica="+"%2.2f,\n"+roznica);
+System.out.printf("iloczyn="+"%2.2f,\n"+iloczyn);
+System.out.printf("iloraz="+"%2.2f,\n"+iloraz);
+
+}
+}

@@ -1,0 +1,6 @@
+String getText()
+void setText(String Text)
+void setEditionable(bolean b)
+int getColumn()
+void setColumn(int column)
+Font getFont()

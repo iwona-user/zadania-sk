@@ -1,0 +1,288 @@
+Æwiczenie 5.1  wykonanie poni¿szego spowoduje b³¹d.
+
+public class Main
+{
+public static void main (String args[])
+{
+int tab[] = new int[5];
+int value = tab[20];
+System.out.println("Element nr 20 to:"+value);
+} end method main
+} end class Main
+
+
+Æwiczenie 5.2  kod równie¿ wywo³a b³¹d
+
+public class Main
+{
+public static void main(String args[])
+{
+Tablica tab = new Tablica();
+int value = tab.getElement(20);
+System.out.println("Element nr 20 to: "+ value);
+} end method main
+} end class Main
+
+public class Tablica
+{
+int tab[];
+
+public Tablica()
+{
+tab = new int[5];
+} end konstruktor
+
+int getElement(int index)
+{
+return tab[index];
+}
+}
+
+
+
+Æwiczenie 5.3
+
+public class Main
+{
+public static void main(String args[])
+{
+Tablica tab = new Tablica();
+int value = tab.getElement(20);
+if(value==-1)
+{
+System.out.println("Nie ma elementu numer 20!");
+}
+else{
+System.out.println("Element nr 20 to:"+value);
+}
+} end method main
+} end class Main
+
+public class Tablica
+{
+int tab[];
+public Tablica()
+{
+tab = new int[5];
+} koniec konstruktora
+
+int getElemet(int index)
+{
+if((index>=0)&&(index<5))
+return tab[index];
+else
+return -1;
+}
+}
+
+
+æwiczenie 5.4
+
+public class Main
+{
+public static void main(String args[])
+{
+Tablica tab = new Tablica();
+int value = tab.getElement(20);
+if(tab.isError)
+{
+System.out.println("Nie ma elementu numer 20!");
+}
+else{
+System.out.println("Element nr 20 to: "+ value);
+}
+} end method main
+} end class Main
+
+public class Tablica
+{
+int tab[];
+boolean isError;
+
+public Tablica()
+{
+tab = new int[5];
+isError = false;
+} koniec konstruktora
+
+int getElement(int index)
+{
+if((index>=0)&&(index<5))
+{
+isError = false;
+return tab[index];
+}
+else{
+isError = true;
+return -1;
+}
+
+}
+}
+
+
+
+Æwiczenie 5.5 Blok try catch
+
+public class Main
+{
+public static void main(String args[])
+{
+Tablica tab = new Tablica();
+int value = tab.getElement(20);
+System.out.println("Element nr 20 to:" + value);
+} end method main
+} end class Main
+
+public class Tablica
+{
+int tab[];
+
+public Tablica()
+{
+tab = new int[5];
+}
+int getEleent(int index)
+{
+int val = 0;
+try{
+val = tab[index];
+}
+catch(ArrayIndexOutOfBoundsException e)
+{
+System.out.println("Nie ma elementu o numerze 20!");
+System.exit(-1);
+}
+return val;
+}
+}
+
+
+
+Æwiczenie 5.6 Wyœwietlanie systemowego komunikatu o b³êdzie.
+
+public class Main
+{
+public static void main(String args[])
+{
+Tablica tab = new Tablica();
+int value = tab.getElement(20);
+System.out.println("Element nr 20 to:"+value);
+} end method main
+} end class Main
+
+public class Tablica
+{
+int tab[];
+
+public Tablica()
+{
+tab = new int[5];
+}
+
+int getElement(int index)
+{
+int val=0;
+try{
+val = tab[index];
+}
+catch(ArrayIndexOutofBoundsException e)
+{
+System.out.println("Nie ma elementu o numerze 20");
+System.out.println(e.toString()); // lub System.out.println(e)
+System.exit(-1);
+}
+return val;
+}
+}
+
+Æwiczeie 5.7 Przechwycenie wyj¹tku w klasie Main
+
+public class Main
+{
+public static void main(String args[])
+{
+
+Tablica tab = new Tablica();
+int value = 0;
+try{
+value = tab.getElement(20);
+} // end try
+catch(ArrayIndexOutOfBoundsException e){
+System.out.println("Nie ma elementu o numerze 20!");
+System.exit(-1);
+} end catch
+System.out.println("Element nr 20 to:" + value);
+
+} end method main
+} end class Main
+
+public class Tablica
+{
+int tab[];
+public Tablica()
+{
+tab = new int[5];
+} end konstruktora
+
+int getElement(int index)
+{
+return tab[index];
+}
+
+}
+
+
+
+Æwiczenie 5.8 generowanie w³asnego wyj¹tku
+
+public class Tablica
+{
+int tab[];
+
+public Tablica()
+{
+tab = new int[5];
+
+} end konstruktor
+
+int getElement(int index)
+{
+if(index<0||index>4)
+{
+throw new ArrayIndexOutOfBoundsException("Index poza zakresem.");
+} end if
+
+return tab[index];
+
+} end getElement
+} end class Tablica
+
+
+Æwiczenie 5.9 Kolejnoœæ przechwytywania wy¹tku
+
+public class Main
+{
+public static void main(String args[])
+{
+Tablica tab = new Tablica();
+int value = 0;
+
+try{
+value = tab.getElement(20);
+} end try
+catch(Exception e)
+{
+System.out.println('Jakiœ b³¹d!");
+System.exit(-1);
+} end catch
+catch(ArrayIndexOutOfBoundsException e)
+{
+System.out.println("Nie ma elementu o numerze 20!");
+System.exit(-1);
+} end catch
+
+System.out.println("Element nr 20:"+value);
+
+} end method main
+} end class Main

@@ -1,0 +1,1300 @@
+NAJWAØNIEJSZA SK£ADNIA:
+
+SELECT lista_kolumn
+FROM lista_tabel
+WHERE warunek
+GROUP BY lista_kolumn
+HAVING warunek
+ORDER BY lista_kolumn
+
+Rozdzia≥ 1
+NOWE S£OWA KLUCZOWE: brak
+
+ROZDZIA£ 2
+PODSTAWY
+POBIERANIA
+DANYCH
+NOWE S£OWA KLUCZOWE: SELECT, FROM
+
+SELECT *
+FROM KLIENCI
+
+SELECT *
+FROM tabela
+
+SELECT lista_kolumn
+FROM tabela
+
+SELECT 
+ImiÍ,
+Nazwisko
+FROM Klienci
+
+SELECT
+[Zakupiona iloúÊ]
+FROM Klienci
+
+ROZDZIA£ 3
+OBLICZENIA
+I ALIASY
+NOWE S£OWA KLUCZOWE: AS
+
+WARTOå∆ LITERA£U:
+
+SELECT
+'ImiÍ:',
+ImiÍ
+FROM ZamÛwienia
+
+SELECT
+5,
+ImiÍ
+FROM ZamÛwienia
+
+OBLICZENIA ARYTMETYCZNE:
+
+SELECT
+IDZamÛwienia,
+ZakupionaIloúÊ AS 'Zakupiona ilosc",
+CenaZaSztukÍ AS 'Cena za SztukÍ'
+ZakupionaIloúÊ * CenaZaSztukÍ AS 'calkowita kwota'
+FROM ZamÛwienia
+
+KONKATENACJA P”L:
+
+SELECT
+IDZamÛwienia,
+ImiÍ,
+Nazwisko,
+ImiÍ+' '+Nazwisko AS 'Nazwa'
+FROM ZamÛwienia
+
+ALIASY TABEL:
+1. tabele piszemy bez cudzys≥owiÛw,
+2. Aliasy tabel moøemy uøywaÊ jako przedrostki gdy pobieramy dane z kilku tabel
+3. Przedrostki uøywa siÍ w podzapytaniach
+
+SELECT
+Nazwisko
+FROM ZamÛwienia123 AS ZamÛwienia
+
+SELECT
+ZamÛwienia.Nazwisko
+FROM ZamÛwienia123 AS ZamÛwienia
+ 
+ROZDZIA£ 4
+KORZYSTANIE
+Z FUNKCJI
+NOWE S£OWA KLUCZOWE: LEFT, RIGHT, SUBSTRING, LTRIM, RTRIM, CONCAT, UPPER, LOWER, 
+GETDATE / NOW / CURRENT_DATE, DATEPART / DATE_FORMAT,
+DATEDIFF, 
+ROUND, RAND, PI, CAST, ISNULL / IFNULL / NVL
+
+FUNKCJE ZNAKOWE:
+
+LEFT(WartoúÊZnakowa, LiczbaZnakÛw)
+
+RIGHT('Jasnoniebieski', 9) AS 'Wynik'
+
+Tabela
+Wynik
+niebieski
+
+SELECT
+LEFT('jasnoniebieski', 5) AS 'Wynik'
+
+Tabela
+Wynik
+jasno
+
+SELECT
+SUBSTRING('czarnaowca', 7, 4) AS 'Wynik'
+
+Tabela
+Wynik
+owca
+
+SELECT
+LTRIM('     dwa owoce') AS 'Wynik'
+
+Tabela
+Wynik
+dwa owoce
+
+SELECT
+RTRIM('dwa owoce     ') AS 'Wynik'
+
+Tabela
+Wynik
+dwa owoce
+
+KONKATENCJA W MySQL:
+
+SELECT
+ImiÍ,
+Nazwisko,
+CONCAT(ImiÍ,' ', Nazwisko) AS 'Nazwa'
+FROM ZamÛwienia
+
+SELECT
+UPPER('Abracham Lincoln') AS 'Konwersja na wielkie litery'
+LOWER('ABRAHAM LINCOLN') AS 'Konwersja na ma≥e litery'
+
+FUNKCJE ZAGNIEØDèONE:
+Tabela
+Prezydent
+Jerzy Waszyngton
+
+"Jerzy Waszyngton    "
+
+SELECT
+RIGHT(RTRIM(Prezydent), 10) AS 'Nazwisko'
+FROM tabela
+
+Nazwisko
+Waszyngton
+
+FUNKCJE DATY I CZASU
+SELECT GETDATE()
+
+GETDATE W MySQL: NOW
+GETDATE W ORACLE: CURRENT_DATE
+
+DATEPART(ElementyDaty, Data)
+
+Prezentacja funkcji
+DATEPART(year, '2009-07-02')	=2009
+DATEPART(quarter '2009-07-02')	=
+DATEPART(dayofyear '2009-07-02')	=
+DATEPART(month, '2009-07-02')	=7
+DATEPART(day, '2009-07-02')	=2
+DATEPART(week, '2009-07-02')	=27 tydzieÒ
+DATEPART(weekday, '2009-07-02')	=5 dzieÒ tygodnia
+DATEPART(hour '2009-07-02')	=
+DATEPART(minute '2009-07-02')	=
+DATEPART(second '2009-07-02')	=
+
+DATEPART w MySQL: DATE_FORMAT
+DATEPART w ORACLE: brak
+
+DATEDIFF(ElementDaty, DataPoczπtkowa, DataKoÒcowa)
+
+DATEDIFF(year, 2009-07-08, 2009-08-14)
+DATEDIFF(quarter, 2009-07-08, 2009-08-14)
+DATEDIFF(month, 2009-07-08, 2009-08-14)
+DATEDIFF(week, 2009-07-08, 2009-08-14)
+DATEDIFF(dayofyear, 2009-07-08, 2009-08-14)
+DATEDIFF(day, 2009-07-08, 2009-08-14)
+DATEDIFF(hour, 2009-07-08, 2009-08-14)
+DATEDIFF(minute, 2009-07-08, 2009-08-14)
+DATEDIFF(second, 2009-07-08, 2009-08-14)
+
+DATEDIFF w MySQL: DATEDIFF(DataKoÒcowa, DataPoczπtkowa)
+DATEDIFF w ORACLE: brak
+
+FUNKCJE LICZBOWE:
+ROUND
+RAND
+PI
+
+ROUND(WartoúÊLiczbowa, LiczbaMiejscPoPrzecinku)
+
+Wyraøenie funkcji ROUND Wynik
+ROUND (712.863, 3) =712.863
+ROUND (712.863, 2) =712.860
+ROUND (712.863, 1) =712.900
+ROUND (712.863, 0) =713.000
+ROUND (712.863, -1) =710.000
+ROUND (712.863, -2) =700.000
+
+RAND([ziarno])
+
+SELECT
+RAND() AS 'WartoúÊ losowa'
+
+SELECT
+PI()  =  3,14159265358979
+
+RAND W ORACLE: brak
+PI W ORACLE: brak
+
+FUNKCJE KONWERSJI:
+
+CAST(Wyraøenie AS TypDanych)
+
+SELECT
+'2009-04-11' AS 'Data Pierwotna',
+CAST ('2009-04-11' AS DATETIME) AS 'Data Przekonwertowana'
+
+Wynik tej funkcji:
+
+Data Pierwotna Data Przekonwertowana
+2009-04-11 2009-04-11 00:00:00.000
+
+SELECT
+Opis,
+ISNULL(Kolor, 'Nieznany') AS Kolor
+FROM Produkty
+
+ISNULL W MySQL: IFNULL
+ISNULL W ORACLE: NVL
+
+ROZDZIA£ 5
+SORTOWANIE
+DANYCH
+NOWE S£OWA KLUCZOWE: ORDER BY, ASC, DESC
+
+SELECT
+lista_kolumn
+FROM lista_tabel
+ORDER BY lista_kolumn
+
+SELECT
+ImiÍ,
+Nazwisko
+FROM Klienci
+ORDER BY Nazwisko ASC
+
+SELECT
+ImiÍ,
+Nazwisko
+FROM Klienci
+ORDER BY ImiÍ DESC
+
+SELECT
+ImiÍ,
+Nazwsiko
+FROM Klienci
+ORDER BY Nazwisko, ImiÍ
+
+SORTOWANIE WZGL DEM POLA OBLICZENIOWEGO
+
+SELECT
+Nazwisko+', '+ImiÍ AS 'Nazwa'
+FROM Klienci
+ORDER BY Nazwa
+
+SELECT
+ImiÍ,
+Nazwisko
+FROM Klienci
+ORDER BY Nazwisko+ImiÍ
+
+WI CEJ NA TEMAT SEKWENCJI SOROTWANIA:
+
+SELECT
+ISNULL(DaneLiczbowe,0)
+FROM nazwa_tabeli
+ORDER BY ISNULL(DaneLiczbowe,0)
+
+Jeøeli 5 i 23 zapisane jako znaki posortujemy to najpierw bÍdzie 23, a poiten 5.
+
+
+ROZDZIA£ 6
+LOGIKA
+OBLICZANIA
+WARTOåCI
+WYJåCIOWYCH
+W KOLUMNACH
+NOWE S£OWA KLUCZOWE: CASE, WHEN, THEN, ELSE, END
+
+SELECT
+kolumna1,
+kolumna2,
+WyraøenieCase
+FROM tabela
+
+FORMAT PROSTY:
+
+SELECT
+CASE kolumna lub wyraøenie
+WHEN wartosc THEN wynik
+WHEN wartosc THEN wynik
+[ELSE wartosc domyúlna]
+END
+
+SELECT
+CASE KodKategorii
+WHEN 'O' THEN 'oWOC'
+when 'w' THEN 'warzywo'
+ELSE 'Inne'
+END AS 'Kategoria',
+OpisProduktu AS 'Opis
+FROM Produkty
+
+FORMAT PRZESZUKUJ•CY;
+
+CASE
+WHEN warunek THEN wynik
+WHEN warunek THEN wynik
+[ELSE wartoúÊ domyúlna]
+END
+
+SELECT
+CASE
+WHEN kodkategorii='o' THEN 'owoc'
+WHEN kodkategorii='w' THEN 'warzywo'
+ELSE 'Inne'
+END AS 'Kategoria',
+OpisProduktu AS 'Opis'
+FROM Produkty
+
+SELECT
+CASE
+WHEN Owoc ='x' THEN 'owoc'
+WHEN Warzywo='x' THEN 'warzywo'
+ELSE 'Inne'
+END As 'Kategoria',
+OpisProduktu AS 'Opis'
+FROM Produkty
+
+ROZDZIA£ 7
+LOGIKA
+OBLICZANIA
+WARTOåCI
+WYJåCIOWYCH
+W WIERSZACH
+NOWE S£OWA KLUCZOWE: WHERE, TOP/LIMIT/ROWNUM
+
+SELECT lista_kolumn
+FROM lista_tabel
+WHERE warunek
+ORDER BY lista_kolumn
+
+SELECT
+ImiÍ,
+Nazwisko
+ZamÛwionaIloúÊ
+FROM ZamÛwienia
+WHERE Nazwisko = 'Kowalski'
+
+SELECT
+ImiÍ,
+Nazwisko,
+ZamÛwionaIloúÊ
+FROM ZamÛwienia
+WHERE ZamÛwionaIloúÊ=5
+
+OPERATORY KLAUZULI WHERE
+=
+<> rÛøne
+>
+<
+>=
+<=
+
+Moøna sortowaÊ rÛwnieø wed≥ug liter np. Nazwisko >'k'
+
+CASE
+WHEN kolumna > wartoúÊ THEN wynik
+END
+
+ORGANICZENIE LICZBY ZWRACANYCH WIERSZY
+
+SELECT
+TOP liczba
+lista_kolumna
+FROM tabela
+
+SELECT
+TOP 10 *
+FORM tabela
+
+SELECT
+TOP 10
+kolumna1,
+kolumna2
+FORM tabela
+
+OGRANICZENIE LICZBY WIERSZY ZA POMOC• SORTOWANIA:
+
+SELECT
+TOP 3
+Tytu≥ AS 'Tytul ksiπøki',
+SprzedaøWBieøπcymMiesiπcu AS 'Sprzedana iloúÊ
+FORM Ksiπøki
+WHERE Autor = 'Szekspir'
+ORDER BY SprzedaøWBieøπcymMiesiπcu DESC
+
+
+ROZDZIA£ 8
+LOGIKA
+BOOLEíA
+NOWE S£OWA KLUCZOWE: AND, OR, NOT, BETWEEN, IN, IS, NULL
+
+AND 
+
+SELECT
+Klient,
+ZakupionaIloúÊ
+FROM ZamÛwienia
+WHERE ZamÛwionaIloúÊ>3 AND ZamÛwionaIloúÊ<7
+
+OR
+
+SELECT
+Klient,
+ZakupionaIloúÊ
+FROM ZamÛwienia
+WHERE ZamÛwionaIloúÊ>3 OR ZamÛwionaIloúÊ<7
+
+NAWIASY:
+To co jest w nawiasach jesst wykonywane razem najpierw.
+
+NOT
+
+SELECT
+Klient,
+WojewÛdztwo,
+ZakupionaIloúÊ
+FROM ZamÛwienia
+WHERE NOT WojeÛdztwo ='wielkopolskie'
+
+SELECT
+Klient,
+WojewÛdztwo,
+ZakupionaIloúÊ
+FROM ZamÛwienia
+WHERE WojeÛdztwo <>'wielkopolskie'
+
+BETWEN
+
+SELECT
+Klient,
+ZakupionaIloúÊ
+FROM ZamÛwienia
+WHERE ZamÛwionaIloúÊ >=5 AND ZamÛwionaIloúÊ<=20
+
+SELECT
+Klient,
+ZakupionaIloúÊ
+FROM ZamÛwienia
+WHERE ZamÛwionaIloúÊ BETWEN 5 AND 20
+
+SELECT
+Klient,
+ZakupionaIloúÊ
+FROM ZamÛwienia
+WHERE ZamÛwionaIloúÊ NOT BETWEN 5 AND 20
+
+IN
+
+SELECT
+Klient,
+WojewÛdztwo
+FROM ZamÛwienia
+WHERE  wojewÛdztwo = 'pomorskie' OR wojewÛdztwo = 'wielkopolskie'
+
+SELECT
+Klient,
+WojewÛdztwo
+FROM ZamÛwienia
+WHERE  wojewÛdztwo IN ('pomorskie', 'wielkopolskie')
+
+SELECT
+Klient,
+WojewÛdztwo
+FROM ZamÛwienia
+WHERE  wojewÛdztwo NOT IN ('pomorskie', 'wielkopolskie')
+
+SELECT
+OpisProdukt
+Waga
+FROM Produkty
+WHERE Waga = 0 OR waga IS NULL 
+
+SELECT
+OpisProdukt
+Waga
+FROM Produkty
+WHERE ISNULL(waga,0)=0
+
+SELECT
+OpisProdukt
+ISNULL(waga,0) AS waga
+FROM Produkty
+WHERE Waga = 0 OR waga IS NULL 
+
+
+ROZDZIA£ 9
+DOPASOWYWANIE
+NIEPRECYZYJNIE
+OKREåLONYCH WARTOåCI
+NOWE S£OWA KLUCZOWE: LIKE, SOUNDEX, DIFFERENCE
+
+SELECT
+Tytu≥Filmu AS 'Film'
+FROM Filmy
+WHERE Tytu≥Filu LIKE '%Mi≥oúÊ%'
+
+SELECT
+Tytu≥Filmu AS 'Film'
+FROM Filmy
+WHERE Tytu≥Filu LIKE '%Mi≥oúÊ'
+
+SELECT
+Tytu≥Filmu AS 'Film'
+FROM Filmy
+WHERE Tytu≥Filu LIKE 'Mi≥oúÊ%'
+
+SELECT
+Tytu≥Filmu AS 'Film'
+FROM Filmy
+WHERE Tytu≥Filu LIKE '% Mi≥oúÊ %'
+
+ZNAKI WIELOZNACZNE:
+
+Znak wieloznaczny	Znaczenie
+%	jakiekolwiek znaki (lub spacje)
+_	dok≥adnie jeden znak (jakikolwiek)
+[zbiÛr_znakÛw]	dok≥adnie jeden znak ze zbioru znakÛw
+[^zbiÛr_znakÛw]	dok≥adnie jeden znak spoza zbioru znakÛw
+
+DOPASOWANIE ZA POMOC• BRZMIENIA:
+
+SOUNDEX('Smitch') AS 'Brzmienia nazwiska Smith'
+DIFFERENCE('slowo1', 'slowo2')   // porÛwnouje liczby (wyniki funkcji SOUNDEX)
+
+DIFFERENCE w MySQL: brak
+DIFFERENCE W ORACLE: brak
+
+ROZDZIA£ 10
+DOKONYWANIE
+PODSUMOWA—
+NOWE S£OWA KLUCZOWE: DISTINCT, SUM, AVG, MIN, MAX,
+COUNT, GROUP BY, HAVING
+
+USUWANIE DUPLIKAT”W
+
+SELECT
+DISTINCT
+Wykonawca
+FORM Tytu≥yUtworÛw
+ORDER BY Wykonawca
+
+
+SELECT
+DISTINCT
+Wykonawca,
+Album
+FORM Tytu≥yUtworÛw
+ORDER BY Wykonawca, Album
+
+FUNKCJE AGREGUJ•CE:
+
+SELECT
+SUM(Op≥ata) AS 'Sumaryczna op≥ata za si≥owniÍ'
+FROM Op≥πty
+WHERE RodzajOP≥πty = 'Silownia'
+
+SELECT
+AVG(LiczbaPunktÛw) AS 'årednia liczba punktÛw za sprawdzian'
+MIN(LiczbaPunktÛw) AS 'Minimalna liczba punktÛw za sprawdzian'
+MAX(LiczbaPunktÛw) AS 'Maxymalna liczba punktÛw za sprawdzian'
+FROM Punktacja
+WHERE OcenianaPraca = 'Sprawdzian'
+
+FUNKCJA COUNT
+
+SELECT
+COUNT(*) AS 'Liczba wierszy z ocenianπ pracπ domowπ'
+FROM Punktacja
+WHERE OcenianaPraca = 'Praca domowa'
+
+SELECT
+COUNT(LiczbaPUnktÛw) AS 'Liczba wierszy z punktami za pracÍ domowπ'
+FROM Punktacja
+WHERE OcenianaPraca = 'Praca domowa'
+
+SELECT
+COUNT(DISTINCT RodzajOp≥aty) AS 'Liczba rodzajÛw op≥aty'
+FROM Op≥aty
+
+GRUPOWANIE DANYCH
+
+SELECT
+OcenianaPraca AS 'Oceniana praca',
+AVG(LiczbaPUnktÛw) AS 'årednia liczba punktÛw'
+FROM Punktacja
+GROUP BY OcenianaPraca
+ORDER BY OcenianaPraca
+
+GRUPOWANIE I SORTOWANIE WZGL DEM KILKU KOLUMN
+
+SELECT
+OcenianaPraca AS 'Oceniana praca',
+UczeÒ AS 'UczeÒ'
+AVG(LiczbaPUnktÛw) AS 'årednia liczba punktÛw'
+FROM Punktacja
+GROUP BY OcenianaPraca, UczeÒ
+ORDER BY OcenianaPraca, UczeÒ
+
+SELECT
+UczeÒ AS 'UczeÒ'
+OcenianaPraca AS 'Oceniana praca',
+AVG(LiczbaPUnktÛw) AS 'årednia liczba punktÛw'
+FROM Punktacja
+GROUP BY OcenianaPraca, UczeÒ
+ORDER BY UczeÒ, OcenianaPraca
+
+KRYTERIA SELEKCJI W RAMACH AGREGACJI:
+
+SELECT
+UczeÒ AS 'UczeÒ'
+OcenianaPracy AS 'Oceniana praca'
+LiczbaPunktÛw AS 'Liczba punktÛw'
+FROM Punkty
+WHERE OcenianaPraca = 'Sprawdzian' 
+AND LiczbaPunktÛw >=70
+ORDER BY UczeÒ, LiczbaPunktÛw
+
+
+SELECT
+UczeÒ AS 'UczeÒ'
+AVG(LiczbaPUnktÛw) AS 'årednia liczba punktÛw za sprawdzian'
+FROM Punkty
+WHERE OcenianaPraca = 'Sprawdzian' 
+GROUP BY UczeÒ
+HAVING AVG(LiczbaPunktÛw)>=70
+ORDER BY UczeÒ
+
+
+SELECT
+UczeÒ AS 'UczeÒ'
+OcenianaPraca AS 'Oceniana praca'
+AVG(LiczbaPUnktÛw) AS 'årednia liczba punktÛw za sprawdzian'
+FROM Punkty
+WHERE OcenianaPraca = 'Sprawdzian' 
+GROUP BY UczeÒ, OcenianaPraca
+HAVING AVG(LiczbaPunktÛw)>=70
+ORDER BY UczeÒ
+
+SELECT
+lista_kolumn
+FROM lista_tabel
+WHERE warunek
+GROUP BY lista_kolumn
+HAVING warunek
+ORDER BY lista_kolumn
+
+
+ROZDZIA£ 11
+Z£•CZENIA
+WEWN TRZNE
+TABEL
+NOWE S£OWA KLUCZOWE: INNER JOIN, ON
+
+KolejnoúÊ wymienianych tabel nie ma znaczenia.
+
+POniøsze dwa z≥πczenia sπ toøsame:
+
+SELECT *
+FROM Klienci
+INNER JOIN ZamÛwienia 
+ON Klienci.IDKlienta = ZamÛwienia.IDKlienta
+
+SELECT *
+FROM ZamÛwienia
+INNER JOIN Klienci
+ON ZamÛwienia.IDKlienta = Klienci.IDKlienta
+
+_____
+ALTERNATYWNA SK£ADNIA Z£•CZE— WEWN TRZNYCH
+
+RÛwnowaøna sk≥adnia:
+Nie naleøy jednak poniøszej sk≥adni uøywaÊ jeøeli powinniúmy uøyÊ WHERE jako kryterium selekcji. Nie da siÍ za po mocπ WHERE jednoczeúnie selekcjonowaÊ i ≥πczyÊ tabel.
+
+SELECT *
+FROM Klienci, ZamÛwienia
+WHERE Klienci.IDKlienta=ZamÛwienia.IDKlienta
+
+ALIASY - CI•G DALSZY:
+
+SELECT
+K.ImiÍ AS 'ImiÍ',
+K.Nazwisko AS 'Nazwisko',
+Z.ZakupionaIloúÊ AS 'IloúÊ',
+Z.CenaZaSztukÍ AS 'cena'
+FROM Klienci AS K
+INNER JOIN ZamÛwienia AS Z
+ON K.IDKlienta=Z.IDKlienta
+
+
+ROZDZIA£ 12
+Z£•CZENIA
+ZEWN TRZNE
+TABEL
+NOWE S£OWA KLUCZOWE: LEFT JOIN, RIGHT JOIN, FULL JOIN
+
+Z≥πczenia lewo stronne = tabela nadrzÍdna jest na lewo od s≥owa LEFT
+
+Z≥πczenia prawo stronne = tabela nadrzÍdna jest na prawo od s≥owa RIGHT
+
+Tabela nadrzÍdna wyúwietla wszystkie wiersze, nawet jeøeli nie ma do czego ich dopasowaÊ w tabeli podrzÍdnej. Tabela podrzÍdna wyúwietla tylko wiersze dopsowane, wiÍc niektÛrych wierszy nie wyúwietli.
+
+
+SELECT
+K.ImiÍ AS 'ImiÍ',
+K.Nazwisko AS 'Nazwisko',
+ZM.ZakupionaIloúÊ AS 'IloúÊ',
+ZM.CenaZaSztukÍ AS 'cena',
+ZW.DataZwrotu AS 'Data zwrotu',
+ZW.KwotaZwrotu AS 'Kwota zwrotu'
+FROM Klienci AS K
+Left JOIN ZamÛwienia AS ZM
+ON K.IDKliena = ZM.IDKlienta
+LEFT JOIN Zwroty AS ZW
+ON ZM.IDZamÛwienia = ZW.IDZamÛwienia
+ORDER BY K.IDKlienta, ZM.IDKlienta, IDZwrotu
+
+WERYFIKACJA WYST POWANIA WARTOåCI NULL
+
+SELECT
+K.ImiÍ AS 'ImiÍ',
+K.Nazwisko AS 'Nazwisko',
+ZM.DataZamÛwienia AS 'Data zamÛwienia',
+ZM.KwotaZamÛwienia AS 'Kwota zamÛwienia',
+FROM Klienci AS K
+Left JOIN ZamÛwienia AS ZM
+ON K.IDKliena = ZM.IDKlienta
+LEFT JOIN Zwroty AS ZW
+ON ZM.IDZamÛwienia = ZW.IDZamÛwienia
+WHERE ZM.IDZamÛwienia IS NOT NULL
+AND ZW.IDZwrotu IS NULL
+ORDER BY K.IDKlienta, ZM.IDZamÛwienia
+
+Z£•CZE PRAWOSTRONE
+Wystarcze odwrÛciÊ kolejnoúÊ tabel
+
+KOLEJNOå∆ WYMIENIANIA TABEL
+KolejnoúÊ wymieniania tabel ma znaczenie.
+
+£•CZENIE PE£NE FULL JOIN:
+Wyúwietlone zostanπ wszystkie wiersze z wszystkich tabel, wiÍc pojawi siÍ wiele pozycji NULL
+
+FULL JOIN W MySQL: brak
+FULL JOIN W ORACLE:brak
+
+SELECT
+Tytu≥Filu AS 'Tytu≥ filmu'
+OpisKlasyfikacji AS 'Opis klasyfikacji'
+FROM Filmy
+FULL JOIN KlasyfikacjaFilmÛw
+ON Filmy.Klasyfikacja = KlasyfikacjaFilmÛw.Klasyfikacja
+ORDER BY Tytu≥Filu, OpisKlasyfikacji
+
+
+ROZDZIA£ 13
+Z£•CZENIA
+ZWROTNE
+I WIDOKI
+NOWE S£OWA KLUCZOWE: CREATE VIEW, ALTER VIEW, DROP VIEW
+
+Z£•CZA ZWROTNE:
+
+SELECT
+Pracownicy.Pracownik AS 'ImiÍ i nazwisko pracownika',
+Prze≥oøeni.Pracownik AS 'ImiÍ i nazwisko prze≥oønego'
+FROM Kadry AS Pracownicy
+INER JOIN Kadry AS Prze≥oøeni
+ON Pracownicy.IDPrze≥oøego = Prze≥oøeni.IDPracownika
+ORDER BY Pracownicy.IDPracownika
+
+TWORZENIE WIDOK”W
+
+CREATE VIEW Nazwa_Widoku AS
+InstrukcjaSelect
+
+
+CREATE VIEW KlienciZamÛwieniaZwroty AS
+SELECT
+K.ImiÍ AS 'ImiÍ',
+K.Nazwisko AS 'Nazwisko',
+ZM.ZakupionaIloúÊ AS 'IloúÊ',
+ZM.CenaZaSztukÍ AS 'cena',
+ZW.DataZwrotu AS 'Data zwrotu',
+ZW.KwotaZwrotu AS 'Kwota zwrotu'
+FROM Klienci AS K
+Left JOIN ZamÛwienia AS ZM
+ON K.IDKliena = ZM.IDKlienta
+LEFT JOIN Zwroty AS ZW
+ON ZM.IDZamÛwienia = ZW.IDZamÛwienia
+
+//   ORDER BY K.IDKlienta, ZM.IDKlienta, IDZwrotu
+
+POBIERANIE DANYCH Z WIDOK”W:
+Widok traktujemy jak tabelÍ w wyraøeniu FROM.
+
+SELECT *
+FROM KlienciZamÛwieniaZwroty
+
+SELECT
+k.Imie,
+K.Nazwisko
+FROM KlienciZamÛwieniaZwroty
+WHERE K.Nazwisko = 'Nowak'
+
+Widoki mogπ byÊ wykorzystywane w celu ograniczenia dostÍpu do danych ze wzglÍdÛw bezpieczeÒstwa.
+
+MODYFIKACJA I USUWANIE WIDOK”W
+Tworzπc ALTER VIEW naleøy od nowa wpisaÊ ca≥π instrukcje SELECT.
+
+ALTER VIEW nazwa_widoku AS
+InstrukcjaSelect
+
+Na przyk≥ad:
+
+CREATE VIEW WidokKlientÛw AS
+SELECT
+ImiÍ,
+Nazwisko
+FROM Klienci
+
+ALTER VIEW WidokKlientÛw AS
+SELECT
+ImiÍ,
+DrugieImiÍ AS 'Drugie imiÍ',
+Nazwisko
+FROM Klienci
+
+USUWANIE WIDOKU:
+
+DROP VIEW NazwaWidoku
+
+DROP VIEW WidokKlientÛw
+
+
+ROZDZIA£ 14
+PODZAPYTANIA
+NOWE S£OWA KLUCZOWE: EXISTS
+
+Istniejπ trzy g≥Ûwne sposoby uøycia podzapytania:
+1. Gdy podzapytanie znajduje siÍ w miejscu listy_tabel, okreúla ürÛd≥o danych.
+2. Gdy podzapytanie znajduje siÍ w miejscu warunku, staje siÍ czÍúciπ kryteriÛw selekcji (WHERE).
+3. Gdy podzapytanie znajduje siÍ w miejscu listy_kolumn, za jego pomocπ tworzona jest pojedyncza kolumna z wartoúciπ obliczanπ.
+
+1. PODZAPYTANIE JAKO èR”D≥O DANYCH
+
+SELECT
+ImiÍ,
+Nazwisko
+FROM (InstrukcjaSelect SELECT)
+
+2. PODZAPYTANIE W KRYTERIUM WHERE
+
+SELECT
+NazwaKlienta as 'Nazwa klienta'
+FROM Klienci
+WHERE
+WynikPodzapytania < 20
+
+
+Zamiast: 
+WHERE WojewÛdztwo IN ('pomorskie', 'wielkopolskie')
+
+Moøna napisaÊ:
+
+WHERE WojewÛdztwo IN
+(SELECT
+WojewÛdztwa
+FROM TabelaWojewÛdztw
+WHERE Region = 'ZachÛd')
+
+KOLEJNY PRZYK£AD:
+
+SELECT NazwaKlienta AS 'Nazwa klienta'
+FROM Klienci
+WHERE IDKlienta IN
+(SELECT IDKlienta
+FROM ZamÛwienia
+WHERE SposÛbZap≥aty = 'GotÛwka')
+
+
+PODZAPYTANIE SKORELOWANE
+to takie ktÛre nie moøe byÊ wykonane samodzielnie.
+
+OPERATOR EXISTS
+
+SELECT
+NazwaKlienta as 'Nazwa klienta'
+FROM Klienci
+WHERE EXISTS
+(SELECT *
+FROM ZamÛwienia
+WHERE Klienci.IDKlienta = ZamÛwienia.IDKlienta)
+
+
+3. Podzapytanie w liúcie_kolumn
+
+SELECT
+NazwaKlienta AS 'Nazwa klienta',
+
+WynikPodzapytania AS 'Liczba zamÛwieÒ'
+
+FROM Klienci
+ORDER BY Klienci.IDKlienta
+
+
+
+SELECT
+NazwaKlienta AS 'Nazwa klienta',
+
+(SELECT
+COUNT (IDZamÛwienia)
+FROM ZamÛwienia
+WHERE Klienci.IDKlienta = ZamÛwienia.IDKlienta)	  AS 'Liczba zamÛwieÒ'
+
+FROM Klienci
+ORDER BY Klienci.IDKlienta
+
+<>
+ROZDZIA£ 15
+LOGIKA
+ZBIOR”W
+NOWE S£OWA KLUCZOWE: UNION, UNION ALL, INTERSECT, EXCEPT/MINUS
+
+UNION - or/dodaje tabele - usuwa duplikaty w ca≥ej instrukcji, a nie tylko w pojedyÒczym selekcie
+UNION ALL - or/dodaje tabele - wyúwietla duplikaty
+INTERSECT - and/czÍúÊ wspÛlna
+EXCEPT - rÛønica
+Innπ instrukcjπ eliminujπcπ duplikaty to DISTINCT
+
+______________
+OPERATOR UNION - analogiczny do OR
+
+OgÛlny schemat:
+
+InstrukcjaSelect_1
+UNION
+InstrukcjaSelect_2
+
+ORDER BY lista_kolumn
+
+Tabele sπ tutaj z≥πczane w ten sposÛb, øe wiersze sπ umieszczane jeden pod drugim.
+W z≥πczeniach JOIN tabele sπ umieszczane obok siebie w poziomie, kolumny obok kolumn.
+
+w instrukcji poniøej wykorzystano pole litera≥u:
+'ZamÛwienie' AS 'Rodzaj',
+'Zwrot' AS 'Rodzaj',
+
+Kolumny sπ wymieniane w tej samej kolejnoúci.
+Sπ uøywane aliasy kolumn aby nadaÊ jedno, jednolite nazewnictwo kolumn tabeli wynikowej.
+
+
+SELECT
+DataZamÛwienia AS 'Data',
+'ZamÛwienie' AS 'Rodzaj',
+LiczbaZamÛwionychSztuk AS 'Liczba sztuk'
+FROM ZamÛwienia
+WHERE IDKlienta = 2
+
+UNION
+
+SELECT
+DataZwrotu AS 'Data',
+'Zwrot' AS 'Rodzaj',
+LiczbaZwrÛconychSztuk AS 'Liczba sztuk'
+FROM Zwroty
+WHERE IDKlienta = 2
+ORDER BY Data
+
+__________
+OPERATOR UNION ALL - analogiczny do or+duplikaty
+
+___________________
+OPERATOR INTERSECT  - analogiczny do AND/czÍúÊ wspÛlna
+Czyli dane zawarte w Zbiorze A i w Zbiorze B
+
+SELECT
+DataZamÛwienia AS 'Data'
+FROM ZamÛwienia
+
+INTERSECT
+
+SELECT
+DataZwrotu AS 'Data'
+FROM Zwroty
+ORDER BY Data
+
+INTERSECT w MySQL: brak
+
+_______________
+OPERATOR EXCEPT - rÛønica
+Czyli dane zawarte w Zbiorze A, a nie zawarte w Zbiorze B:
+Znajdujπ siÍ w InstrukcjaSelect_1, a nie znajdujπ siÍ InstrukcjaSelect_2.
+
+OgÛlna forma:
+
+SELECT
+InstrukcjaSelect_1
+
+EXCEPT
+
+InstrukcjaSelect_2
+ORDER BY lista_kolumn
+
+
+
+
+SELECT
+DataZamÛwienia AS 'Data'
+FROM ZamÛwienia
+
+EXCEPT
+
+SELECT
+DataZwrotu AS 'Data'
+FROM Zwroty
+ORDER BY Data
+
+EXCEPT W MySQL: brak
+EXCEPT W ORACLE: MINUS
+
+
+ROZDZIA£ 16
+PROCEDURY
+SK£ADOWANE
+I PARAMETRYZACJA
+NOWE S£OWA KLUCZOWE: CREATE PROCEDURE, BEGIN, EXEC/CALL, 
+ALTER PROCEDURE, DROP PROCEDURE
+
+OgÛlnie mÛwiπc, istniejπ dwa powody, dla ktÛrych warto korzystaÊ z procedur sk≥adowanych:
+1. moøliwoúÊ zapisywania kilku instrukcji SQL w jednej procedurze,
+2. wykorzystanie parametrÛw w po≥πczeniu z instrukcjami SQL.
+
+
+TWORZENIE PROCEDUR SK£ADOWANYCH:
+
+CREATE PROCEDURE NazwaProcedury
+AS
+DeklaracjeOpcjonalnychParametrÛw
+BEGIN
+InstrukcjeSQL
+END
+
+
+Przyk≥ad:
+
+CREATE PROCEDURE Procedura_1
+AS
+BEGIN
+SELECT *
+FROM Klienci
+END
+
+
+
+
+PARAMETRY W PROCEDURZE SK£ADOWANEJ
+
+CREATE PROCEDURE ProceduraKlient
+(@KlientID INT)
+AS
+BEGIN
+SELECT *
+FROM Klienci
+WHERE IDKlienta = @KlientID
+END
+
+
+WYKONYWANIE PROCEDUR SK£ADOWANYCH
+
+EXEC ProceduraKlient
+@KlientID = 2
+
+EXEC w	MySQL: CLL
+
+
+MODYFIKOWANIE I USUWANIE PROCEDUR SK£ADOWANYCH
+
+ALTER PROCEDURE ProceduraKlient
+(@KlientID INT)
+AS
+BEGIN
+SELECT
+TOP 5 *
+FROM Klienci
+WHERE IDKlienta = @KlientID
+END
+
+USUWANIE PROCEDURY:
+
+DROP PROCEDURE ProceduraKlient
+
+RÛønica pomiÍdzy procedurami a funkcjami:
+1. Procedury sk≥adowane mogπ zawieraÊ dowolnπ liczbÍ parametrÛw wyjúciowych.
+2. Procedury sk≥adowane sπ wykonywane przez program wywo≥ujπcy.
+
+
+ROZDZIA£ 17
+MODYFIKOWANIE
+DANYCH
+NOWE S£OWA KLUCZOWE: INSERT INTO, VALUES, DELETE,
+TRUNCATE TABLE, UPDATE
+
+WSTAWIANIE DANYCH
+
+Sposoby wstawiania wierszy:
+1. dodanie okreúlonych danych wyszegÛlnionych w instrukcji INSERT,
+2. dodanie danych bÍdπcych wynikiem instrukcji SELECT.
+
+
+INSERT INTO Klienci
+(ImiÍ, Nazwisko, WojewÛdztwo)
+VALUES
+('Wiktoria', 'Janas', 'podlaskie'),
+('Krzysztof', 'Wodecki', 'lubelskie')
+
+Toøsamo:
+
+INSERT INTO Klienci
+(WojewÛdztwo, Nazwisko, ImiÍ)
+VALUES
+('podlaskie', 'Janas', 'Wiktoria'),
+('lubelskie', 'Wodecki', 'Krzysztof')
+
+
+OgÛlny format instrukcji INSERT INTO ma postaÊ:
+
+INSERT INTO tabela
+(lista_kolumn)
+VALUES
+(WartoúciWiersza1),
+(WartoúciWiersza2)
+(powtÛrz dowolnπ liczbÍ razy)
+
+KolejnoúÊ kolumn moøe byÊ dowolna ale zgodna z kolejnoúciπ wartoúci VALUES (WartoúciWiersza1)
+
+
+
+Instrukcja:
+
+
+INSERT INTO Klienci
+(ImiÍ, Nazwisko)
+VALUES
+('Tomasz', 'Morawski')
+
+spowoduje wstawienie NULL w wojewÛdztwie.
+
+WSTAWIANIE PRZEZ PODZAPYTANIE:
+
+INSERT INTO Klienci
+(ImiÍ, Nazwisko, WojewÛdztwo)
+SELECT
+Nazwa1,
+Nazwa2,
+WojewÛdztwo
+FROM TransakcjeKlientÛw
+WHERE WojewÛdztwo = 'úlπskie'
+
+
+USUWANIE DANYCH:
+
+DELETE
+FROM tabela
+WHERE warunek
+
+
+DELETE
+FROM Klienci
+WHERE WojewÛdztwo = 'úlπskie'
+
+TRUNCATE - usuwa wszystkie wiersze w tabeli
+
+TRUNCATE TABLE Klienci
+
+Toøsamo:
+
+DELETE
+FROM Klienci
+
+Z tym, øe TRUNCATE resetuje zawartoúÊ kolumn z autoprzyrostem.
+
+AKTUALIZACJA DANYCH
+
+UPDATE tabela
+SET Kolumna1 = Wyraøenie1,
+Kolumna2 = Wyraøenie2
+(powtÛrz dowolnπ liczbÍ razy)
+WHERE warunek
+
+Przyk≥ad:
+
+UPDATE Klienci
+SET ImiÍ = 'Bart≥omiej',
+Nazwisko = 'Kowalewski'
+WHERE IDKlienta = 1
+
+
+
+AKTUALIZACJA DANYCH W TABELI
+ZA POMOC• PODZAPYTA— SKORELOWANYCH
+
+
+
+UPDATE Klienci
+SET Klienci.WojewÛdztwo =
+(SELECT
+TransakcjeKlientÛw.WojewÛdztwo
+FROM TransakcjeKlientÛw
+WHERE TransakcjeKlientÛw.IDKlienta = Klienci.IDKlienta),
+
+Klienci.KodPocztowy =
+(SELECT TransakcjeKlientÛw.KodPocztowy
+FROM TransakcjeKlientÛw
+WHERE TransakcjeKlientÛw.IDKlienta = Klienci.IDKlienta)
+
+WHERE EXISTS
+(SELECT *
+FROM TransakcjeKlientÛw
+WHERE TransakcjeKlientÛw.IDKlienta = Klienci.IDKlienta)
+
+
+ROZDZIA£ 18
+UTRZYMANIE
+TABEL
+NOWE S£OWA KLUCZOWE: CREATE TABLE, DROP TABLE,
+CREATE INDEX, DROP INDEX
+
+Definicja dzia≥aÒ wobec usuwania i modyfikacji kluczy obcych:
+1. No Action (niepodejmowanie øadnego dzia≥ania),
+2. Cascade (kaskada),
+3. Set Null (wstawienie wartoúci NULL).
+
+TWORZENIE TABEL:
+
+CREATE TABLE MojaTabela
+(Kolumna_1 INT IDENTITY (1,1) PRIMARY KEY NOT NULL,
+Kolumna_2 INT NOT NULL
+REFERENCES PowiπzanaTabela (PierwszaKolumna),
+Kolumna_3 VARCHAR (25) NULL,
+Kolumna_4 FLOAT NULL DEFAULT (10) )
+
+Usuwanie kolumny 3:
+
+ALTER TABLE MojaTabela
+DROP COLUMN Kolumna_3
+
+Usuwanie ca≥ej tabeli:
+
+DROP TABLE MojaTabela
+
+TWORZENIE INDEKS”W
+
+CREATE INDEX Indeks2
+ON MojaTabela (Kolumna_4)
+
+Usuwanie indeksÛw:
+
+DROP INDEX Indeks2
+ON MojaTabela
+
+
+
+Rozdzia≥ 19
+NOWE S£OWA KLUCZOWE: brak
+
+Rozdzia≥ 20
+NOWE S£OWA KLUCZOWE: brak
+

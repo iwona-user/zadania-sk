@@ -1,0 +1,40 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // write your code here
+        System.out.println("Równanie kwadratowe ma postaæ ax^2+bx+c");
+        System.out.println("W zale¿noœci od wartoœci wspóczynników a, b i c ma 0, 1 lub 2 miejsca zerowe");
+        Scanner in = new Scanner(System.in);
+        System.out.println("Podaj wspó³czynnik a");
+        double a = in.nextDouble();
+        System.out.println("wspó³czynnik a wynosi " + a);
+
+        System.out.println("Podaj wspó³czynnik b");
+        double b = in.nextDouble();
+        System.out.println("Wspó³czynnik b wynosi " + b);
+
+        System.out.println("Podaj wspó³czynnik c");
+        double c = in.nextDouble();
+        System.out.println("Wspó³czynnik c wynosi " + c);
+        double delta = b * b - 4 * a * c;
+        System.out.println("Delta wynosi " + delta);
+        if (delta < 0) {
+            System.out.println("To równanie nie ma miejsca zerowego poniewa¿ delta<0");
+        }
+        else if (delta == 0) {
+            System.out.println("To równanie ma jedno miejsce zerowe.");
+            double x=-b/2*a;
+            System.out.println("Miejsce zerowe tego równania to x="+x);
+        }
+        else {
+            System.out.println("To równanie ma dwa miejsca zerowe");
+            double x1=(-b-Math.sqrt(delta))/2*a;
+            double x2=(-b+Math.sqrt(delta))/2*a;
+            System.out.println("Miejsca zerowe tego równania to: "+x1+"  "+x2);
+        }
+    }
+}
