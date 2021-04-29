@@ -1,0 +1,124 @@
+klasa woshingmasin
+klasa program
+klasy dziedzicz¹ce
+klasa przetrzymywaæ danie prania
+
+program bêdzie klas¹
+setProgram get nex i preivosProgrm w washingMashin
+next i previos Program (muszê znaleœæ index w liscie i zrobiæ index +1, idex -1)  
+metoda rouund  zaokr¹glenie po³ówek
+zaokr¹glenie jednoœci  
+metoda rint - najbli¿sza wartoœci ca³kowitej.
+setTemp bêdzie pilnowal zakresu i zrobi walidacjê 
+tempDown temp U zalidacja czy jestem nadal w zakresie, if jaka jest rednostaka i skok o 0,5 lub o 1
+- punkt 
+16 kolejka
+=(Rant(2*80,7))
+
+public class App {}
+
+public class WashingMachine { 
+
+public string program_name;
+public program_number;
+private double temp;
+bolean unitTemp = true; 
+
+changeUnit(bolean unitTemp)
+if(unitTemp = true) 
+{
+this temp = ((5/9)*temp)-17,777;
+System.out.println("Temperatura:"+temp+"F"
+}
+else if(unitTemp =false) 
+{
+this.temp = ((9/5)*temp)+32;
+System.out.println("Temperatura:"+temp+"F")
+}
+}
+
+void setTemp(double temp)
+if(unitTemp = true)
+{
+this.temp=temp;
+}
+
+
+double getTemp()
+{
+return temp;
+}
+
+tempUP() {
+if(unitTemp=true) else if{}
+System.out.println("current temp.......")
+ }
+
+tempDown() {
+if(unitTemp=true) else if{}
+System.out.println("current temp.......")
+ }
+
+}
+
+public class Program()
+{
+
+
+private enum program_number {program1 (1), program2 (2), program3 (3), program4 (4), program5 (5), program6 (6), program7 (7), program8 (8), program9 (9), program10 (10) 
+};
+
+// protected List<Program> lista= adList(new Program(programNumber"", programName ), ....)
+
+
+public Program()
+{
+this.program_name=1;
+this.program_number=program1;
+}
+
+void setProgram(int number)
+{
+if(program_number>program_number.size())
+{
+System.Out.println("Numer programu poza zakesem 1-10");
+}
+else if(program_number<0)
+{
+System.out.println("Numer programu poza zakresem 1-10);
+}
+else
+{
+this.program_number=number-1;
+}
+
+}
+
+Program getProgram()
+{
+Program program = new Program();
+program.program_namer;
+program.program_number;
+return program;
+} 
+
+previousProgram(int quantity) {
+if(Program-quantity<0)
+{
+this.programNumber =10;
+}
+else {
+this programNumber = programNumber - quantity;
+}
+
+nextProgram(int quantity) {
+if(Program+quantity<programNumber.size())
+{
+tis programNumber=1
+}
+this programNumber = programNumber + quantity;
+    }
+
+
+
+}
