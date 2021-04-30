@@ -1,3 +1,14 @@
+9. zawsze w celciuszach
+11. jak pralka z ma³ymi zmianami
+
+p.14 maksymalny ³adunek dla pralki Amica i Beco
+p. 15 domyœlny czas dla ka¿dnego modelu dla Amica i Beco
+
+16.  w jakich stopniach pdoawaæ temperaturê
+
+
+punkt 2 Poacz¹tek, koniec oznacza program nr 1 i nr 10?
+
 klasa woshingmasin
 klasa program
 klasy dziedzicz¹ce
