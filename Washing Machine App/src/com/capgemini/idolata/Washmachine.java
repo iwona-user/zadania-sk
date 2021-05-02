@@ -8,6 +8,22 @@ import java.util.List;
  *
  */
 
+
+	//Pytania:
+	//czy brakuje jakiejœ klasy?
+	//jakie maj¹ byæ modyfikatory dostêpu? które metody, zmienne, klasy maj¹ byæ publiczne, prywatne itd?
+	//co umieœciæ w klasie App?
+	//czy w setProgram trzeba zaokr¹glaæ programNumber do liczby ca³kowitej?
+	//czy w setTem i unitTemp na peono powinno byæ zaokr¹glenie round i rint? je¿eli bêdzie round to nigdy nie bêdziemy mogli ustawiæ temperatury setem np. 60 C, bo zaokr¹gli do 60,5 C.
+	//jak zabezpieczyæ siê przed poszerzeniem listy i duplikatami?
+	//jak pouk³adaæ classy w pakiety? pakiety biznesowe itd. Jakie typy, nazwy pakietów i klas?
+	//show status ma wyœwietlaæ siê 5 sekund. Da siê tak zrobiæ? 
+	//pkt. 5 i 7 co umieœciæ w try catch?
+	//pkt.6, czy pkt 6. jest realizowany zwyk³ym Systemem.out.println w tempUp i tempDown?
+	//pkt. 8 czy ograniczenie do wirowanie dla programu Delikatne nale¿y zrobiæ w getV i upV ifem?
+
+
+
 public abstract class Washmachine {
 	
 	private Program currentProgram;
