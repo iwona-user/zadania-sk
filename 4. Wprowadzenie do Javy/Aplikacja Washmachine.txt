@@ -1,135 +1,51 @@
-9. zawsze w celciuszach
-11. jak pralka z ma³ymi zmianami
+Pytania:
+0. jak dostaæ siê z klasy podrzêdnej do pól klasy nadrzêdnej?
+OK 1. czy brakuje jakiejœ klasy?
+>metody publiczne 2. jakie maj¹ byæ modyfikatory dostêpu? które metody, zmienne, klasy maj¹ byæ publiczne, prywatne itd?
+okey 3. co umieœciæ w klasie App?
+>sprawdziæ poprawnoœæ setprogram i program Next i program Previous okey 4. czy w setProgram trzeba zaokr¹glaæ programNumber do liczby ca³kowitej?
+>jak zrobiæ zaokr¹glenie do np. 60 lub 60,5 ?5. czy w setTem i unitTemp na peono powinno byæ zaokr¹glenie round i rint? je¿eli bêdzie round to nigdy nie bêdziemy mogli ustawiæ temperatury setem np. 60 C, bo zaokr¹gli do 60,5 C.
+>6. jak zabezpieczyæ siê przed poszerzeniem listy i duplikatami?
+>7. jak pouk³adaæ classy w pakiety? pakiety biznesowe itd. Jakie typy, nazwy pakietów i klas?
+>8. show status ma wyœwietlaæ siê 5 sekund. Da siê tak zrobiæ? 
+> okey 9.  Zadanie 5 i 7 co umieœciæ w try catch?
+okey 10. pkt.6. czy jest zrealizowany zwyk³ym Systemem.out.println w tempUp i tempDown?
+> okey 11. pkt. 8 czy ograniczenie do wirowanie dla programu Delikatne nale¿y zrobiæ w getV i upV ifem?
 
-p.14 maksymalny ³adunek dla pralki Amica i Beco
-p. 15 domyœlny czas dla ka¿dnego modelu dla Amica i Beco
 
-16.  w jakich stopniach pdoawaæ temperaturê
-
-
-punkt 2 Poacz¹tek, koniec oznacza program nr 1 i nr 10?
-
-klasa woshingmasin
-klasa program
-klasy dziedzicz¹ce
-klasa przetrzymywaæ danie prania
-
-program bêdzie klas¹
-setProgram get nex i preivosProgrm w washingMashin
-next i previos Program (muszê znaleœæ index w liscie i zrobiæ index +1, idex -1)  
-metoda rouund  zaokr¹glenie po³ówek
-zaokr¹glenie jednoœci  
-metoda rint - najbli¿sza wartoœci ca³kowitej.
+Wskazówki:
+next i previos Program (muszê znaleœæ index w liscie i zrobiæ index +1, idex -1)
+metoda rouund  zaokr¹gla do 0,5
+metoda rint zaokr¹gla do 1
 setTemp bêdzie pilnowal zakresu i zrobi walidacjê 
-tempDown temp U zalidacja czy jestem nadal w zakresie, if jaka jest rednostaka i skok o 0,5 lub o 1
-- punkt 
-16 kolejka
-=(Rant(2*80,7))
+tempDown tempUp walidacja czy jest nadal w zakresie, if jaka jest jednostaka i skok o 0,5 lub o 1
+pkt. 16 kolejka
 
-public class App {}
+_____________
+Stwórz aplikacje do obs³ugi pralki. Spe³niaj¹c¹, poni¿sze kryteria:
+1. Klasa pralka przechowuje numer i nazwê aktualnego programu prania. Program jest wybierany z listy 10 predefiniowanych programów. 
+2. Pralka implementuje metody setProgram(int ) i getProgram() oraz metody nextProgram(), previusProgram(). Metoda set program ustawia program, getProgram zwraca go. nextProgram zmienia na kolejny (tak jak okr¹g³e pokrêt³o w pralce) i previousProgram poprzedni. Gdy u¿ytkownik wybierze przekroczy zakres programów, przeskakuje na koniec/pocz¹tek w zale¿noœci od wybranej opcji.
+3. Pralka posiada zmienn¹ temp która przechowuje wartoœæ temperatury jako liczbê zmiennoprzecinkow¹ ze skokiem 0,5 stopnia. Temperatura jest z zakresu 0 – 90 stopni. Istnieje mo¿liwoœæ przestawienia pralki na stopnie Farenheit – wówczas zakres siê zmienia na 32 – 194, a skok do pe³nych 1. Prze³¹czenie mo¿na wykonaæ w dowolnej chwili, co za tym idzie obecnie ustawiona temperatura powinna byæ konwertowana i zaokr¹glana (je¿eli to konieczne) do drugiego systemu jednostek.
+4. Pralka implementuje metody setTemp getTemp. Metody dzia³aj¹ na temperaturze zgodnie z systemem jednostek, który obecnie jest ustawiony.
+5. Dopisz metody tempUp() i tempDown() (skok 0 0,5 stopnia Celsjusza, 1 stopieñ Farenhaita). Zakresy s¹ nie przekraczalne. Przy próbie zmiany temperatury poza zakres powinien siê pojawiæ b³¹d o przekroczonym zakresie, a wartoœæ powinna siê nie zmieniæ.
+6. Zmiana temperatury powoduje wyœwietlenie siê komunikatu o temperaturze np. „current temp 75 oC”. PodpowiedŸ tabela ASCII ¢
+7. Pamiêtaj o odpowiedniej obs³udze b³êdów i o zabezpieczeniu wszystkich zakresów.
+8. Pralka przechowuje wartoœæ 0 – 1000 predkoœci wirowania. Skok obrotów o 100. Zakres zachowuje siê podobnie jak w programach. Ka¿dy program ma ustalon¹ domyœln¹ wartoœæ zalecanego wirowania, która jest ustawiana po wybraniu programu. Metody setV getV i upV i downV. Program „Delikatne”, nie pozwoli zwiêkszyæ wirowania powy¿ej 500 obrotów.
+9. Pralka posiada funkcje showStatus która wypisuje komunikat z³o¿ony z wszytskich wartoœci, które przechowuje pralka. Np.: numer programu 4, temperatura 60 oC
+10. Ka¿da z pralek ma mo¿liwoœæ przesuniêcia startu programu, a ka¿dy program posiada przybli¿on¹ datê trwania.
+11. Stwórz klasy pralek Beko, Wirpool, Amica. Pralki te zachowuj¹ siê tak samo jak pralka z ma³ymi zmianami
+12. Pralka beko ma skok temperatury w nie o 0,5 stopnia tylko o 1 oC i o 2 o F.
+13. Pralka wirpool ma 15 programów prania.
+14. Pralka Amica i Beko, maj¹ wbudowan¹ wagê. Pozwala ona na sprawdzenie, czy maksymalna ³adownoœæ pralki nie zosta³a przekroczona (max ³adunek, jest okreœlony dla konkretnego modelu pralki).
+15. Stwórz metodê, która pozwoli na oszacowanie realnego czasu trwania cyklu. Szacowany czas jest obliczany z prostego wzoru: Domyœlny czas * (aktualna waga/ maksymalna ³adownoœæ). Wartoœæ ma byæ zwracana w raporcie z pkt 9
 
-public class WashingMachine { 
+// metoda return aktualny za³adunek
+// metoda (aktualny za³¹dunek i domyœlny czas)
+// metoda(ttime waga ³adownoœæ)
+// lub klasy poœrednie
 
-public string program_name;
-public program_number;
-private double temp;
-bolean unitTemp = true; 
-
-changeUnit(bolean unitTemp)
-if(unitTemp = true) 
-{
-this temp = ((5/9)*temp)-17,777;
-System.out.println("Temperatura:"+temp+"F"
-}
-else if(unitTemp =false) 
-{
-this.temp = ((9/5)*temp)+32;
-System.out.println("Temperatura:"+temp+"F")
-}
-}
-
-void setTemp(double temp)
-if(unitTemp = true)
-{
-this.temp=temp;
-}
-
-
-double getTemp()
-{
-return temp;
-}
-
-tempUP() {
-if(unitTemp=true) else if{}
-System.out.println("current temp.......")
- }
-
-tempDown() {
-if(unitTemp=true) else if{}
-System.out.println("current temp.......")
- }
-
-}
-
-public class Program()
-{
-
-
-private enum program_number {program1 (1), program2 (2), program3 (3), program4 (4), program5 (5), program6 (6), program7 (7), program8 (8), program9 (9), program10 (10) 
-};
-
-// protected List<Program> lista= adList(new Program(programNumber"", programName ), ....)
-
-
-public Program()
-{
-this.program_name=1;
-this.program_number=program1;
-}
-
-void setProgram(int number)
-{
-if(program_number>program_number.size())
-{
-System.Out.println("Numer programu poza zakesem 1-10");
-}
-else if(program_number<0)
-{
-System.out.println("Numer programu poza zakresem 1-10);
-}
-else
-{
-this.program_number=number-1;
-}
-
-}
-
-Program getProgram()
-{
-Program program = new Program();
-program.program_namer;
-program.program_number;
-return program;
-} 
-
-previousProgram(int quantity) {
-if(Program-quantity<0)
-{
-this.programNumber =10;
-}
-else {
-this programNumber = programNumber - quantity;
-}
-
-nextProgram(int quantity) {
-if(Program+quantity<programNumber.size())
-{
-tis programNumber=1
-}
-this programNumber = programNumber + quantity;
-    }
-
-
-
-}
+16. Ka¿da z pralek posiada metodê, która zwraca dane historyczne z 30 ostatnich cykli. Informacje jakie s¹ zawarte w historii to: program, temperatura, prêdkoœæ wirowania. Beko i Amica maj¹ dodatkowo wagê prania z danego cyklu i procent za³adowania.
+17. W metodzie main stwórz metodê do optymalizacji prania. Metoda ma przeœledziæ ca³¹ historiê prania i po za³adunku i programie okreœliæ czy któreœ pranie mo¿na by³o po³¹czyæ.
+Je¿eli ka¿dy z cykli ma ponad 90% za³adunku, wyœwietl informacje o braku optymalizacji. W przypadku tych samych programów z mniejsz¹ ³adownoœci¹ wyœwietl informacje:
+„Zaoszczêdzi³byœ pior¹c rzadziej programem „Nawa programu” w temperaturze „Najni¿sza temperatura”.
+Na koniec punktów 10 i 15 w metodzie main stwórz obiekty wszystkich pralek, ustaw i program, temperaturê, podnieœ i obni¿ temperaturê, ustaw prêdkoœæ obrotów i dla wszystkich wyœwietl status.
