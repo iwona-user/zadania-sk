@@ -7,7 +7,7 @@ package com.capgemini.idolata;
  * @author idolata
  *
  */
-public class Wirpool {
+public class Wirpool extends Washmachine {
 
 	/**
 	 * 
@@ -17,5 +17,5 @@ public class Wirpool {
 	public Wirpool() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
 }

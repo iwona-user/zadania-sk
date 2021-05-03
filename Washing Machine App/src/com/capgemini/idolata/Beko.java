@@ -15,6 +15,8 @@ public class Beko extends Washmachine implements WashProperties {
 	
 	private int maximumCapacity;
 	private double weight;
+	private String estimatedTime;
+	private double defaultTime;
 
 	
 	public Beko() {
@@ -24,73 +26,101 @@ public class Beko extends Washmachine implements WashProperties {
 
 	@Override
 	public void checkWeight() {
-		// TODO Auto-generated method stub
-
+		if(weight > maximumCapacity) {
+		System.out.println("Waga zosta³a przekroczona");
+		}
 	}
 
 	@Override
-	public int estimatedTime() {
+	public double estimatedTime() {
 		double estimatedTime = defaultTime*(weight/maximumCapacity);
 		return estimatedTime;
 	}
 
 	
 	
-	//skok temperatury o 1 C i 2 F
+
+ 
+	
 	@Override
 	void tempUp() {
 		if(unitTemp==true) {
-			if(temp>=0 && temp<90) {
-			this.temp= temp+1;
-			System.out.println("Aktualna temperatura:"+temp+"\u00B0");
-			}
-			else {
-				System.out.println("Próba wykroczenia poza zakres temperatur 0-90"+"\u00B0");
-			}
-		}
+			try {
+				if(temp>=0 && temp<=89.5) {
+					this.temp= temp+1;
+					System.out.println("Aktualna temperatura:"+temp+"\u00B0");
+					}
+				else {
+					throw new  IllegalArgumentException();
+					}
+			} // end try
+				catch(IllegalArgumentException e) {
+					System.out.println("Próba przekroczenia dopuszczalnego zakresu");
+				} // end catch
+
+		} // end if unit
 		else {
-			if(temp>=32 && temp<194) {
+			try {
+			if(temp>=32 && temp<=193) {
 				this.temp=temp+2;
 				System.out.println("Aktualna temperatura:"+temp+"F");
-			}
+				}
 			else {
-				System.out.println("Próba wykroczenia poza zakres temperatur 32-194 F");
+				throw new  IllegalArgumentException();				
+				}
 			}
-		}
+		catch(IllegalArgumentException e) {
+			System.out.println("Próba przekroczenia dopuszczalnego zakresu");
+		} // end catch
+		} // end else
 	}
+		
 
-	//skok temperatury o 1 C i 2 F
+	
+	
 	@Override
 	void tempDown() {
 		if(unitTemp==true) {
-			if(temp>0 && temp<=90) {
-			this.temp= temp-1;
-			System.out.println("Aktualna temperatura:"+temp+"\u00B0");
-			}
-			else {
-				System.out.println("Próba wykroczenia poza zakres temperatur 0-90"+"\u00B0");
-			}
-		}
+			try {
+				if(temp>=0.5 && temp<=90) {
+					this.temp= temp-1;
+					System.out.println("Aktualna temperatura:"+temp+"\u00B0");
+					}
+				else {
+					throw new  IllegalArgumentException();
+					}
+			} // end try
+				catch(IllegalArgumentException e) {
+					System.out.println("Próba przekroczenia dopuszczalnego zakresu");
+					} // end catch
+
+		} // end if unit
 		else {
-			if(temp>32 && temp<=194) {
+			try {
+			if(temp>=33 && temp<=194) {
 				this.temp=temp-2;
 				System.out.println("Aktualna temperatura:"+temp+"F");
-			}
+				}
 			else {
-				System.out.println("Próba wykroczenia poza zakres temperatur 32-194 F");
-			}
-		}
+				throw new  IllegalArgumentException();				
+				}
+			} // end try
+		catch(IllegalArgumentException e) {
+			System.out.println("Próba przekroczenia dopuszczalnego zakresu");
+			} // end catch
+		} // end else
 	}
 
+	
 	
 	@Override
 	void showStatus() {
         if (unitTemp == true) {
             System.out.println("Numer programu:" + currentProgram.getProgramNumber() + " " + currentProgram.getProgramName() + " Temperatura:" + this.temp + "\u00B0 "
-                    + "Prêdkoœæ wirowania:" + this.spinSpeed + " Domyœlny czas prania:" + currentProgram.getDefoultTime() + "Szacowany czas prania:"+currentProgram.estimatedTime);
+                    + "Prêdkoœæ wirowania:" + this.spinSpeed + " Domyœlny czas prania:" + currentProgram.getDefoultTime() + "Szacowany czas prania:"+estimatedTime);
         } else {
             System.out.println("Numer programu:" + currentProgram.getProgramNumber() + " " + currentProgram.getProgramName() + " Temperatura:" + this.temp + "F"
-                    + " Prêdkoœæ wirowania:" + this.spinSpeed + " Domyœlny czas prania:" + currentProgram.getDefoultTime() + "Szacowany czas prania:"+currentProgram.estimatedTime);
+                    + " Prêdkoœæ wirowania:" + this.spinSpeed + " Domyœlny czas prania:" + currentProgram.getDefoultTime() + "Szacowany czas prania:"+estimatedTime);
         }
 	}
 	

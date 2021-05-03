@@ -15,7 +15,8 @@ public class Amica extends Washmachine implements WashProperties {
 	
 	private int maximumCapacity;
 	private double weight;
-
+	private double estimatedTime;
+	private double defaultTime;
 	
 	public Amica() {
 		// TODO Auto-generated constructor stub
@@ -30,7 +31,7 @@ public class Amica extends Washmachine implements WashProperties {
 
 		
 	@Override
-	public int estimatedTime() {
+	public double estimatedTime() {
 		double estimatedTime = defaultTime*(weight/maximumCapacity);
 		return estimatedTime;
 	}
@@ -39,10 +40,10 @@ public class Amica extends Washmachine implements WashProperties {
 	void showStatus() {
         if (unitTemp == true) {
             System.out.println("Numer programu:" + currentProgram.getProgramNumber() + " " + currentProgram.getProgramName() + " Temperatura:" + this.temp + "\u00B0 "
-                    + "Prêdkoœæ wirowania:" + this.spinSpeed + " Domyœlny czas prania:" + currentProgram.getDefoultTime() + "Szacowany czas prania:"+currentProgram.estimatedTime);
+                    + "Prêdkoœæ wirowania:" + this.spinSpeed + " Domyœlny czas prania:" + currentProgram.getDefoultTime() + "Szacowany czas prania:"+estimatedTime);
         } else {
             System.out.println("Numer programu:" + currentProgram.getProgramNumber() + " " + currentProgram.getProgramName() + " Temperatura:" + this.temp + "F"
-                    + " Prêdkoœæ wirowania:" + this.spinSpeed + " Domyœlny czas prania:" + currentProgram.getDefoultTime() + "Szacowany czas prania:"+currentProram.estimatedTime);
+                    + " Prêdkoœæ wirowania:" + this.spinSpeed + " Domyœlny czas prania:" + currentProgram.getDefoultTime() + "Szacowany czas prania:"+estimatedTime);
         }
 	}
 	
