@@ -11,6 +11,6 @@ public interface WashProperties {
 
 	
 	void checkWeight();
-	int estimatedTime();
+	double estimatedTime();
 	
 	}

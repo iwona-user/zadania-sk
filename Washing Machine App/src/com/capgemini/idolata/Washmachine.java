@@ -8,39 +8,30 @@ import java.util.List;
  *
  */
 
-
-	//Pytania:
-	//czy brakuje jakiejœ klasy?
-	//jakie maj¹ byæ modyfikatory dostêpu? które metody, zmienne, klasy maj¹ byæ publiczne, prywatne itd?
-	//co umieœciæ w klasie App?
-	//czy w setProgram trzeba zaokr¹glaæ programNumber do liczby ca³kowitej?
-	//czy w setTem i unitTemp na peono powinno byæ zaokr¹glenie round i rint? je¿eli bêdzie round to nigdy nie bêdziemy mogli ustawiæ temperatury setem np. 60 C, bo zaokr¹gli do 60,5 C.
-	//jak zabezpieczyæ siê przed poszerzeniem listy i duplikatami?
-	//jak pouk³adaæ classy w pakiety? pakiety biznesowe itd. Jakie typy, nazwy pakietów i klas?
-	//show status ma wyœwietlaæ siê 5 sekund. Da siê tak zrobiæ? 
-	//pkt. 5 i 7 co umieœciæ w try catch?
-	//pkt.6, czy pkt 6. jest realizowany zwyk³ym Systemem.out.println w tempUp i tempDown?
-	//pkt. 8 czy ograniczenie do wirowanie dla programu Delikatne nale¿y zrobiæ w getV i upV ifem?
-
+	//todo zabezpieczenie przed duplikatami ifem
+	//todo sprawdziæ listê predefiniowanych programów
+	//todo sprawdziæ konstruktor
+	//todo pouk³adaæ klasy w pakiety 
+	//ograniczenie do wirowanie dla programu Delikatne w getV i upV ifem
+	//todo sprawdziæ wagê w Amico
+	
 
 
 public abstract class Washmachine {
 	
-	private Program currentProgram;
-    private double temp=0;
-    private boolean unitTemp = true; // if true the temperature is set in Celsius
-    private int spinSpeed;
+	protected Program currentProgram;
+    protected double temp=0;
+    protected boolean unitTemp = true; // if true the temperature is set in Celsius
+    protected int spinSpeed;
 
     
 
     final protected List<Program> listPrograms = new ArrayList<>(15);
-
-
-    // czy protected jest dobrze?
-    protected List<Program> sublistProgramList = listPrograms.subList(0, 9);
+    protected List<Program> sublistProgramList = listPrograms.subList(0, 10);
     
-    // czy w konstruktorze powinny byæ te¿ inne zmienne?
-    // czy te listy wystarcz¹ aby uznaæ pkt.1) za zrealizowany "Program jest wybierany z listy 10 predefiniowanych programów. "	
+    protected LimitedQueue<WashingHistory> programHistoryQueue = new LimitedQueue<>(30);
+    
+
     
     public Washmachine() {
        
@@ -62,41 +53,53 @@ public abstract class Washmachine {
     }
     
     
-    // dlaczego podkreœla siê programNumber? jak to zmieniæ?
-    void setProgram(int paramNumber) {
-        if (paramNumber > sublistProgramList.size()) {
-        	currentProgram.programNumber = sublistProgramList.get(0).getProgramNumber();
-        } else if (paramNumber < sublistProgramList.get(0).getProgramNumber()) {
-        	currentProgram.programNumber=sublistProgramList.get(9).getProgramNumber();
-        } else {
-        	currentProgram.programNumber = paramNumber;
+     
+    void setProgram(int paramNumber)
+	{
+        if (paramNumber > sublistProgramList.size())
+		{
+        	currentProgram = sublistProgramList.get(0);
+        } else if (paramNumber < sublistProgramList.get(0).getProgramNumber())
+		{
+        	currentProgram = sublistProgramList.get(8);
+        } else
+		{
+        	currentProgram = sublistProgramList.get(paramNumber-1);
         }
-    } 
+    }
 
     int getProgram() {
         return currentProgram.getProgramNumber();
     } 
 
 
-	void nextProgram(){
-		if(currentProgram.getProgramNumber()==10){
-			currentProgram.programNumber=1;
+    void nextProgram()
+	{
+		if(currentProgram.getProgramNumber() == 10)
+		{
+			currentProgram = sublistProgramList.get(0);
 		}
-		else {
-			currentProgram.programNumber=currentProgram.getProgramNumber()+1;
-			}
+		else
+		{
+			currentProgram = sublistProgramList.get(currentProgram.getProgramNumber() + 1);
 		}
+	}
 
 	
     
-	void previusProgram() {
-		if(currentProgram.getProgramNumber()==1) {
-			currentProgram.programNumber=10;	
+    void previusProgram() 
+	{
+
+		if(currentProgram.getProgramNumber()==1)
+		{
+			currentProgram = sublistProgramList.get(9);	
 		}
-		else {
-			currentProgram.programNumber=currentProgram.getProgramNumber()-1;
+		else
+		{
+			currentProgram = sublistProgramList.get(currentProgram.getProgramNumber() - 2);
 		}
 	}
+    
 
 
     void changeUnit(boolean unitTemp) {
@@ -136,52 +139,72 @@ public abstract class Washmachine {
 
   
 
-	// nie wiem jak zrobiæ tutaj obslugê b³êdu, co dok³adnie umieœciæ w try{} catch{} 
-	// czy przy tak napisanej metodzie próba zmiany temperatury poza zakres, temperautra siê nie zmieni?
 	void tempUp() {
 		if(unitTemp==true) {
-			if(temp>=0 && temp<90) {
-			this.temp= temp+0.5;
-			System.out.println("Aktualna temperatura:"+temp+"\u00B0");
-			}
-			else {
-				System.out.println("Próba wykroczenia poza zakres temperatur 0-90"+"\u00B0");
-			}
-		}
+			try {
+				if(temp>=0 && temp<=89.5) {
+					this.temp= Math.round((temp+0.5)*2)/2.0;
+					System.out.println("Aktualna temperatura:"+temp+"\u00B0");
+					}
+				else {
+					throw new  IllegalArgumentException();
+					}
+			} // end try
+				catch(IllegalArgumentException e) {
+					System.out.println("Próba przekroczenia dopuszczalnego zakresu");
+				} // end catch
+
+		} // end if unit
 		else {
-			if(temp>=32 && temp<194) {
-				this.temp=temp+1;
+			try {
+			if(temp>=32 && temp<=193) {
+				this.temp=Math.rint(temp+1);
 				System.out.println("Aktualna temperatura:"+temp+"F");
-			}
+				}
 			else {
-				System.out.println("Próba wykroczenia poza zakres temperatur 32-194 F");
+				throw new  IllegalArgumentException();				
+				}
 			}
-		}
+		catch(IllegalArgumentException e) {
+			System.out.println("Próba przekroczenia dopuszczalnego zakresu");
+		} // end catch
+		} // end else
 	}
 		
 
 	
-	// nie wiem jak jak zrobiæ tutaj obslugê b³êdu, co dok³adnie umieœciæ w try{} catch{} 
-	// czy przy tak napisanej metodzie próba zmiany temperatury poza zakres, temperautra siê nie zmieni?
+
+
 	void tempDown() {
 		if(unitTemp==true) {
-			if(temp>0 && temp<=90) {
-			this.temp= temp-0.5;
-			System.out.println("Aktualna temperatura:"+temp+"\u00B0");
-			}
-			else {
-				System.out.println("Próba wykroczenia poza zakres temperatur 0-90"+"\u00B0");
-			}
-		}
+			try {
+				if(temp>=0.5 && temp<=90) {
+					this.temp= Math.round((temp-0.5)*2)/2.0;
+					System.out.println("Aktualna temperatura:"+temp+"\u00B0");
+					}
+				else {
+					throw new  IllegalArgumentException();
+					}
+			} // end try
+				catch(IllegalArgumentException e) {
+					System.out.println("Próba przekroczenia dopuszczalnego zakresu");
+					} // end catch
+
+		} // end if unit
 		else {
-			if(temp>32 && temp<=194) {
-				this.temp=temp-1;
+			try {
+			if(temp>=33 && temp<=194) {
+				this.temp=Math.rint(temp-1);
 				System.out.println("Aktualna temperatura:"+temp+"F");
-			}
+				}
 			else {
-				System.out.println("Próba wykroczenia poza zakres temperatur 32-194 F");
-			}
-		}
+				throw new  IllegalArgumentException();				
+				}
+			} // end try
+		catch(IllegalArgumentException e) {
+			System.out.println("Próba przekroczenia dopuszczalnego zakresu");
+			} // end catch
+		} // end else
 	}
 
 
@@ -189,12 +212,21 @@ public abstract class Washmachine {
 	
 
     void setV(int paramV) {
-        if (paramV >= 0 && paramV <= 1000) {
-            spinSpeed = (int) ((Math.rint(paramV / 100)) * 100);  // with an accuracy of 100
-        } else {
-            System.out.println("PrÄ™dkoÅ›Ä‡ wirowania poza zakresem 1-1000");
-        }
-    }
+    	if(currentProgram.getProgramNumber() == 1) {
+    		 if (paramV >= 0 && paramV <= 500) {
+    	            spinSpeed = (int) ((Math.rint(paramV / 100)) * 100);  // with an accuracy of 100
+    	        } else {
+    	            System.out.println("PrÄ™dkoÅ›Ä‡ wirowania poza zakresem 1-500");
+    	        }
+    		}
+    	else {
+    		 if (paramV >= 0 && paramV <= 1000) {
+    	            spinSpeed = (int) ((Math.rint(paramV / 100)) * 100);  // with an accuracy of 100
+    	        } else {
+    	            System.out.println("PrÄ™dkoÅ›Ä‡ wirowania poza zakresem 1-1000");
+    	        }
+    		}
+    	}
 
     
     
@@ -206,14 +238,25 @@ public abstract class Washmachine {
 
  
 	void upV() {
-		if(spinSpeed==1000) {
-			this.spinSpeed = 0;
-		}
+		if(currentProgram.getProgramNumber() == 1)
+			{if(spinSpeed ==500) {
+				spinSpeed=0;
+				}
 		else {
 			this.spinSpeed=spinSpeed+100;
 		}
+			}
+		else {
+			if(spinSpeed==1000) {
+			this.spinSpeed = 0;
+				}
+			else {
+			this.spinSpeed=spinSpeed+100;
+				}
+			}
 	}
-
+	
+	
 	
 	void downV() {
 		if(spinSpeed==0) {
@@ -240,14 +283,15 @@ public abstract class Washmachine {
 
     void delayStart(int paramDelayStart) {
         int endWashing = this.currentProgram.getDefoultTime() + paramDelayStart;
-        System.out.println("Pranie skoÅ„czy siÄ™ za:" + endWashing + "minut.");
+        System.out.println("Pranie skoñczy siê za: "+endWashing+"minut.");
+        
     }
     
     
-    void washingHistory() {
-    	Queue<> history = new ArrayDeque<>();
-    	System.out.println(history);
-    }
+    public void Start()
+	{
+		programHistoryQueue.add(new WashingHistory(currentProgram, temp, spinSpeed));
+	}
 
 
 } 

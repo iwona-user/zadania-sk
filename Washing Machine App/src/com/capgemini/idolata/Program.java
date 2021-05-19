@@ -8,9 +8,9 @@ public class Program {
 
    
     private String programName;
-    private int programNumber;
-    private int spinSpeed;
-    private int defoultTime;
+    public int programNumber;
+	private int spinSpeed;
+    protected int defoultTime;
 
 
     
@@ -39,6 +39,14 @@ public class Program {
 
 
 
+	/**
+	 * @param programName the programName to set
+	 */
+	public void setProgramName(String programName) {
+		this.programName = programName;
+	}
+
+
 
 	/**
 	 * @return the programNumber
@@ -47,6 +55,14 @@ public class Program {
 		return programNumber;
 	}
 
+
+
+	/**
+	 * @param programNumber the programNumber to set
+	 */
+	public void setProgramNumber(int programNumber) {
+		this.programNumber = programNumber;
+	}
 
 
 
@@ -59,6 +75,14 @@ public class Program {
 
 
 
+	/**
+	 * @param spinSpeed the spinSpeed to set
+	 */
+	public void setSpinSpeed(int spinSpeed) {
+		this.spinSpeed = spinSpeed;
+	}
+
+
 
 	/**
 	 * @return the defoultTime
@@ -66,5 +90,17 @@ public class Program {
 	public int getDefoultTime() {
 		return defoultTime;
 	}
+
+
+
+	/**
+	 * @param defoultTime the defoultTime to set
+	 */
+	public void setDefoultTime(int defoultTime) {
+		this.defoultTime = defoultTime;
+	}
+
+
+	
 
 }

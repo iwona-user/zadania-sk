@@ -1,0 +1,33 @@
+		
+		
+		public void Optimize()
+		{
+			HashMap<Int, List<WashingHistory>> groupedByProgram = new HashMap<Int, List<WashingHistory>>();
+			
+			for(WashingHistory wh : washingHistoryQueue)
+			{
+				if (!groupedByProgram.containsKey(wh.Program.programNumber))
+				{
+					List<WashingHistory> list = new ArrayList<WashingHistory>();
+					list.add(WashingHistory);
+			
+					groupedByProgram.put(wh.Program.programNumber, list);
+				} else
+				{
+					groupedByProgram.get(wh.Program.programNumber).add(wh);
+				}
+			}
+			
+			// todo: sprawdzamy czy hash map (nasze groupedByProgram) zawiera co najmniej jeden program z lista o wielkosci > 1
+			for(gbp : groupedByProgram)
+			{
+				if(gbp.listaZHistoriamiPraniaTegoProgramu.wielkoscListy > 1)
+				{
+					// badanie elementow listy ze soba i proba wyswietlenia info o optymalizacji gdy co najmniej suma dwoch nie przekracza maxymalnego zaladunku (albo 90% z max zaladunku)	
+				}
+			}
+		
+		
+			
+
+
