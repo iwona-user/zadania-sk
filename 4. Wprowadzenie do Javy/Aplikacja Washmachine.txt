@@ -1,15 +1,16 @@
 Pytania:
-0. jak dostaæ siê z klasy podrzêdnej do pól klasy nadrzêdnej?
-OK 1. czy brakuje jakiejœ klasy?
+>sprawdziæ metodê setProgram, NextProgram i PreviousProgram
+>super.pole 0. jak dostaæ siê z klasy podrzêdnej do pól klasy nadrzêdnej?
+OK 1.
 >metody publiczne 2. jakie maj¹ byæ modyfikatory dostêpu? które metody, zmienne, klasy maj¹ byæ publiczne, prywatne itd?
 okey 3. co umieœciæ w klasie App?
->sprawdziæ poprawnoœæ setprogram i program Next i program Previous okey 4. czy w setProgram trzeba zaokr¹glaæ programNumber do liczby ca³kowitej?
+>sprawdziæ poprawnoœæ setprogram i program Next i program Previous okey 4. 
 >jak zrobiæ zaokr¹glenie do np. 60 lub 60,5 ?5. czy w setTem i unitTemp na peono powinno byæ zaokr¹glenie round i rint? je¿eli bêdzie round to nigdy nie bêdziemy mogli ustawiæ temperatury setem np. 60 C, bo zaokr¹gli do 60,5 C.
 >6. jak zabezpieczyæ siê przed poszerzeniem listy i duplikatami?
 >7. jak pouk³adaæ classy w pakiety? pakiety biznesowe itd. Jakie typy, nazwy pakietów i klas?
 >8. show status ma wyœwietlaæ siê 5 sekund. Da siê tak zrobiæ? 
-> okey 9.  Zadanie 5 i 7 co umieœciæ w try catch?
-okey 10. pkt.6. czy jest zrealizowany zwyk³ym Systemem.out.println w tempUp i tempDown?
+> okey 9.
+okey 10. 
 > okey 11. pkt. 8 czy ograniczenie do wirowanie dla programu Delikatne nale¿y zrobiæ w getV i upV ifem?
 
 
