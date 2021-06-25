@@ -1,13 +1,7 @@
-/**
- * 
- */
-package com.capgemini.idolata;
+package com.capgemini.idolata.techbackground;
 
-/**
- * @author idolata
- *
- */
 public class WashingHistory {
+
 	public Program program;
 	public double temp;
 	public double spinSpeed;

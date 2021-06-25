@@ -1,13 +1,18 @@
 package com.capgemini.idolata;
 
-import java.util.HashMap;
-import java.util.List;
+import com.capgemini.idolata.amica.Amica;
+import com.capgemini.idolata.beko.Beko;
+import com.capgemini.idolata.techbackground.Program;
+import com.capgemini.idolata.wirpool.Wirpool;
 
 public class App {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Program prog = new Program("Jeden", 1, 2, 3);
+		System.out.println("ccccc "+prog); // Test
+		System.out.println("bbbbb");
+		
 		
 		Amica amica = new Amica(); 
 		Beko beko = new Beko();
@@ -36,10 +41,12 @@ public class App {
 		wirpool.tempDown();
 		wirpool.setV(600);
 		wirpool.showStatus();
-		
-		
+
 		
 
-	}
+		
+		
+		
+	} // end of main method
 
 }

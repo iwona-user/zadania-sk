@@ -1,34 +1,23 @@
-/**
- * 
- */
-package com.capgemini.idolata;
+package com.capgemini.idolata.beko;
 
-/**
- * @author idolata
- *
- */
+import com.capgemini.idolata.common.WashProperties;
+import com.capgemini.idolata.common.Washmachine;
+
 public class Beko extends Washmachine implements WashProperties {
-
-	/**
-	 * 
-	 */
+	
 	
 	private int maximumCapacity;
 	private double weight;
 	private String estimatedTime;
 	private double defaultTime;
-
 	
-	public Beko() {
-		// TODO Auto-generated constructor stub
-	}
 	
-
 	@Override
 	public void checkWeight() {
 		if(weight > maximumCapacity) {
-		System.out.println("Waga zosta³a przekroczona");
-		}
+			System.out.println("Waga zosta³a przekroczona");
+			}
+		
 	}
 
 	@Override
@@ -37,13 +26,8 @@ public class Beko extends Washmachine implements WashProperties {
 		return estimatedTime;
 	}
 
-	
-	
-
- 
-	
 	@Override
-	void tempUp() {
+	public void tempUp() {
 		if(unitTemp==true) {
 			try {
 				if(temp>=0 && temp<=89.5) {
@@ -53,12 +37,12 @@ public class Beko extends Washmachine implements WashProperties {
 				else {
 					throw new  IllegalArgumentException();
 					}
-			} // end try
+			} 
 				catch(IllegalArgumentException e) {
 					System.out.println("Próba przekroczenia dopuszczalnego zakresu");
-				} // end catch
+				}  
 
-		} // end if unit
+		}  
 		else {
 			try {
 			if(temp>=32 && temp<=193) {
@@ -71,15 +55,12 @@ public class Beko extends Washmachine implements WashProperties {
 			}
 		catch(IllegalArgumentException e) {
 			System.out.println("Próba przekroczenia dopuszczalnego zakresu");
-		} // end catch
-		} // end else
+		}  
+		} 
 	}
-		
 
-	
-	
 	@Override
-	void tempDown() {
+	public void tempDown() {
 		if(unitTemp==true) {
 			try {
 				if(temp>=0.5 && temp<=90) {
@@ -89,12 +70,12 @@ public class Beko extends Washmachine implements WashProperties {
 				else {
 					throw new  IllegalArgumentException();
 					}
-			} // end try
+			}  
 				catch(IllegalArgumentException e) {
 					System.out.println("Próba przekroczenia dopuszczalnego zakresu");
-					} // end catch
+					}  
 
-		} // end if unit
+		}  
 		else {
 			try {
 			if(temp>=33 && temp<=194) {
@@ -104,18 +85,16 @@ public class Beko extends Washmachine implements WashProperties {
 			else {
 				throw new  IllegalArgumentException();				
 				}
-			} // end try
+			}  
 		catch(IllegalArgumentException e) {
 			System.out.println("Próba przekroczenia dopuszczalnego zakresu");
-			} // end catch
-		} // end else
+			}  
+		} 
 	}
 
-	
-	
 	@Override
-	void showStatus() {
-        if (unitTemp == true) {
+	public void showStatus() {
+		if (unitTemp == true) {
             System.out.println("Numer programu:" + currentProgram.getProgramNumber() + " " + currentProgram.getProgramName() + " Temperatura:" + this.temp + "\u00B0 "
                     + "Prêdkoœæ wirowania:" + this.spinSpeed + " Domyœlny czas prania:" + currentProgram.getDefoultTime() + "Szacowany czas prania:"+estimatedTime);
         } else {
@@ -126,6 +105,8 @@ public class Beko extends Washmachine implements WashProperties {
 	
 	
 	
-		
-
-}
+	
+	
+	
+	
+} // end of class

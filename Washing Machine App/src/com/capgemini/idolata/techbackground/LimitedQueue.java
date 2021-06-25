@@ -1,18 +1,10 @@
-/**
- * 
- */
-package com.capgemini.idolata;
+package com.capgemini.idolata.techbackground;
 
 import java.util.LinkedList;
 
-/**
- * @author idolata
- *
- */
-
 public class LimitedQueue<E> extends LinkedList<E> {
-
-    private int limit;
+		
+	private int limit;
 
     public LimitedQueue(int limit) {
         this.limit = limit;
@@ -25,5 +17,6 @@ public class LimitedQueue<E> extends LinkedList<E> {
            super.remove();
         }
         return added;
+     
     }
 }

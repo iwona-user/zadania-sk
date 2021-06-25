@@ -1,16 +1,7 @@
-/**
- * 
- */
-package com.capgemini.idolata;
+package com.capgemini.idolata.common;
 
-/**
- * @author idolata
- *
- */
 public interface WashProperties {
 
-	
 	void checkWeight();
 	double estimatedTime();
-	
-	}
+}
