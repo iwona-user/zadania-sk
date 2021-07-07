@@ -3,8 +3,8 @@ package com.capgemini.idolata.techbackground;
 import java.util.LinkedList;
 
 public class LimitedQueue<E> extends LinkedList<E> {
-		
-	private int limit;
+
+    private int limit;
 
     public LimitedQueue(int limit) {
         this.limit = limit;
@@ -14,9 +14,9 @@ public class LimitedQueue<E> extends LinkedList<E> {
     public boolean add(E o) {
         boolean added = super.add(o);
         while (added && size() > limit) {
-           super.remove();
+            super.remove();
         }
         return added;
-     
+
     }
 }
