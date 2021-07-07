@@ -17,7 +17,7 @@ public abstract class Washmachine {
     public List<Program> listPrograms = new ArrayList<>(15);
     int a = 0;
     int b = 10;
-    List<Program> sublistProgramList = listPrograms.subList(a, b);
+    List<Program> sublistProgramList;
     protected LimitedQueue<WashingHistory> programHistoryQueue = new LimitedQueue<>(30);
 
 
@@ -38,6 +38,8 @@ public abstract class Washmachine {
         listPrograms.add(new Program("Jasne kolory", 13, 500, 1));
         listPrograms.add(new Program("Wełna/pranie ręczne", 14, 500, 1));
         listPrograms.add(new Program("Szybkie pranie", 15, 500, 1));
+
+        sublistProgramList = listPrograms.subList(a, b);
     }
 
 
