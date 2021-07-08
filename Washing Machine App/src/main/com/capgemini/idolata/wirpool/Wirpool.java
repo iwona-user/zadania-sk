@@ -25,7 +25,7 @@ public class Wirpool extends Washmachine {
     }
 
     @Override
-    public void previusProgram() {
+    public void previousProgram() {
         if (currentProgram.getProgramNumber() == 1) {
             currentProgram = listPrograms.get(14);
         } else {

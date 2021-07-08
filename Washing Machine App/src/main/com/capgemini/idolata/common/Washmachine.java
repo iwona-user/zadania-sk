@@ -1,11 +1,11 @@
 package com.capgemini.idolata.common;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.capgemini.idolata.techbackground.LimitedQueue;
 import com.capgemini.idolata.techbackground.Program;
 import com.capgemini.idolata.techbackground.WashingHistory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Washmachine {
 
@@ -39,7 +39,7 @@ public abstract class Washmachine {
         listPrograms.add(new Program("Wełna/pranie ręczne", 14, 500, 1));
         listPrograms.add(new Program("Szybkie pranie", 15, 500, 1));
 
-        sublistProgramList = listPrograms.subList(a, b);
+        sublistProgramList  = listPrograms.subList(a, b);
     }
 
 
@@ -66,7 +66,7 @@ public abstract class Washmachine {
     }
 
 
-    public void previusProgram() {
+    public void previousProgram() {
 
         if (currentProgram.getProgramNumber() == 1) {
             currentProgram = sublistProgramList.get(9);
